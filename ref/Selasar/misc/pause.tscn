@@ -1,0 +1,93 @@
+[gd_scene load_steps=4 format=3 uid="uid://du18rv8qtgb12"]
+
+[ext_resource type="Script" uid="uid://bfwjwy3sr8xnt" path="res://scripts/pause.gd" id="1_hb15n"]
+[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_hmt0q"]
+
+[sub_resource type="Theme" id="Theme_hmt0q"]
+default_font = ExtResource("2_hmt0q")
+
+[node name="pause" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_hb15n")
+
+[node name="Main" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -154.0
+offset_right = 300.0
+offset_bottom = 154.0
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Main"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = SubResource("Theme_hmt0q")
+theme_override_fonts/font = ExtResource("2_hmt0q")
+theme_override_font_sizes/font_size = 50
+text = "Resume   "
+alignment = 2
+
+[node name="Settings" type="Button" parent="Main"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = SubResource("Theme_hmt0q")
+theme_override_fonts/font = ExtResource("2_hmt0q")
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "Settings   "
+alignment = 2
+
+[node name="Exit" type="Button" parent="Main"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = SubResource("Theme_hmt0q")
+theme_override_fonts/font = ExtResource("2_hmt0q")
+theme_override_font_sizes/font_size = 50
+text = "Exit   "
+alignment = 2
+
+[node name="Settings" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -154.0
+offset_right = 150.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SFX" type="Label" parent="Settings"]
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="SFX Slider" type="HSlider" parent="Settings"]
+layout_mode = 2
+
+[node name="Music" type="Label" parent="Settings"]
+layout_mode = 2
+text = "Music"
+
+[node name="Music Slider" type="HSlider" parent="Settings"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="Settings"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_hmt0q")
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="button_up" from="Main/Resume" to="." method="_on_resume_button_up"]
+[connection signal="button_up" from="Main/Settings" to="." method="_on_settings_button_up"]
+[connection signal="button_up" from="Main/Exit" to="." method="_on_exit_button_up"]
+[connection signal="button_up" from="Settings/Back" to="." method="_on_back_button_up"]

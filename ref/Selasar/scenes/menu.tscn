@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dchq6lt8rjm5i"]
+
+[ext_resource type="Script" uid="uid://b5bdi05tpnyce" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_con2f"]
+
+[node name="menu" type="Node2D"]
+script = ExtResource("1_vjb58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -666.0
+offset_top = -604.0
+offset_right = 2854.0
+offset_bottom = 1617.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -42.5
+offset_right = 64.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 200
+text = "Quanta Disk"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 80
+text = "Play"
+
+[connection signal="button_up" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_button_up"]

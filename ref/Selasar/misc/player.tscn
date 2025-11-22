@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmbp68jk0yvah"]
+
+[ext_resource type="Texture2D" uid="uid://npgdrx2j3pd6" path="res://icon.svg" id="1_mbj7q"]
+[ext_resource type="Script" uid="uid://d1ggcb7jotr5m" path="res://scripts/player.gd" id="1_vkjtc"]
+[ext_resource type="Texture2D" uid="uid://epoaxnsicx0a" path="res://assets/quantadisk.png" id="3_k52mv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vkjtc"]
+radius = 64.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_vkjtc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mbj7q")
+
+[node name="target" type="Node2D" parent="."]
+
+[node name="Marker2D2" type="Marker2D" parent="target"]
+position = Vector2(0, 160)
+
+[node name="Sprite2D" type="Sprite2D" parent="target/Marker2D2"]
+visible = false
+modulate = Color(0, 0.983334, 1, 1)
+rotation = 3.14159
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_k52mv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vkjtc")
+
+[node name="Camera2D" type="Camera2D" parent="."]

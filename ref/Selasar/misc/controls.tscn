@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://b0mmqndsikemu"]
+
+[ext_resource type="Texture2D" uid="uid://sj7kckmudp6n" path="res://assets/Frame 8.png" id="1_7mc4r"]
+[ext_resource type="Script" uid="uid://cx7kjvgrfacs4" path="res://scripts/controls.gd" id="1_lgv3t"]
+[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_lgv3t"]
+[ext_resource type="Texture2D" uid="uid://c3y1s64jt3icl" path="res://assets/Frame 9.png" id="3_v4mgv"]
+[ext_resource type="Texture2D" uid="uid://cma2rwl4aoer2" path="res://assets/Frame 10.png" id="4_tdkg6"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lgv3t")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_7mc4r")
+expand_mode = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lgv3t")
+theme_override_font_sizes/font_size = 80
+text = "Save"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_v4mgv")
+expand_mode = 3
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lgv3t")
+theme_override_font_sizes/font_size = 80
+text = "Pick Up"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+texture = ExtResource("4_tdkg6")
+expand_mode = 3
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_lgv3t")
+theme_override_font_sizes/font_size = 80
+text = "Switch Radius"
