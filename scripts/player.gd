@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var tooltip: Node2D = $"../tooltip"
 @onready var controls: Control = $"../../CanvasLayer/Control"
 @onready var portal: TileMapLayer = $"../portal"
+var permanent_colliders_root: Node2D = null
 
 
 
@@ -21,6 +22,8 @@ extends CharacterBody2D
 @export var acceleration := 500.0
 @export var friction := 600.0
 
+
+const NON_COPYABLE_LAYERS := ["permanent"]
 
 
 var last_direction := Vector2.DOWN  
@@ -53,10 +56,11 @@ func _ready() -> void:
 	print(selector)
 	# Get tilemap layers
 	for child in map.get_children():
-		if child is TileMapLayer:
-			if child.name == "portal": continue
-			var layer:Dictionary = {child.name: child}
-			layers.merge(layer)
+			if child is TileMapLayer:
+				if child.name == "portal": continue
+				var layer:Dictionary = {child.name: child}
+				layers.merge(layer)
+	_build_permanent_colliders()
 			
 
 func _physics_process(delta: float) -> void:
@@ -170,7 +174,15 @@ func pickup():
 	
 	match holding:
 		true: # Player already holding
-			if layers["objects"].get_cell_source_id(coords) != -1 or layers["collisions"].get_cell_source_id(coords) != -1:
+			var blocked := false
+			if layers.has("objects") and layers["objects"].get_cell_source_id(coords) != -1:
+				blocked = true
+			if layers.has("collisions") and layers["collisions"].get_cell_source_id(coords) != -1:
+				blocked = true
+			if layers.has("permanent") and layers["permanent"].get_cell_source_id(coords) != -1:
+				blocked = true
+
+			if blocked:
 				print("Can't place Quanta Disk here!")
 				return
 			pickables_layer.set_cell(coords, object_held["source_id"], object_held["atlas"])
@@ -228,9 +240,13 @@ func copy():
 	if layers["pickables"].get_cell_source_id(coords) == -1:
 		print("No Quanta Disk found!")
 		return	
-		
+
+	var blocked_cells := _collect_permanent_cells(disk_radius, coords)
+
 	saved_disk.clear()
 	for layer: TileMapLayer in layers.values():
+		if layer.name in NON_COPYABLE_LAYERS:
+			continue
 		var data: Dictionary = {
 			"layer": layer,
 			"source_id": [],
@@ -239,6 +255,8 @@ func copy():
 			"pos": []
 		}
 		for cell in disk_radius:
+			if blocked_cells.has(cell):
+				continue
 			data["source_id"].append(layer.get_cell_source_id(cell))
 			data["atlas"].append(layer.get_cell_atlas_coords(cell))
 			data["alt"].append(layer.get_cell_alternative_tile(cell))
@@ -260,13 +278,18 @@ func paste():
 	if saved:  # Load
 		for data: Dictionary in saved_disk:
 			var layer: TileMapLayer = data["layer"]
+			if layer.name in NON_COPYABLE_LAYERS:
+				continue
 			var source = data["source_id"]
 			var atlas = data["atlas"]
 			var alt = data["alt"]
 			var pos = data["pos"]
 
 			for i in pos.size():
-				layer.set_cell(coords + pos[i], source[i], atlas[i], alt[i])
+				var dest: Vector2i = coords + pos[i]
+				if _is_permanent_at(dest):
+					continue
+				layer.set_cell(dest, source[i], atlas[i], alt[i])
 		
 		saved = false
 		saved_disk.clear()
@@ -277,6 +300,7 @@ func paste():
 			"alt": [],
 			"pos": []
 		}
+		controls.label.text = "Copy"
 		print("Loaded surroundings")
 
 		if not is_tile_free(player_tile):
@@ -370,13 +394,45 @@ func update_disk_radius(coords: Vector2i) -> void:
 
 	
 func is_tile_free(tile_pos: Vector2i) -> bool:
-	if not layers.has("collisions") and not layers.has("objects"):
+	if not layers.has("collisions") and not layers.has("objects") and not layers.has("permanent"):
 		return true
 		
-	var collision_layer: TileMapLayer = layers["collisions"]
-	var objects_layer: TileMapLayer = layers["objects"]
-	
-	return collision_layer.get_cell_source_id(tile_pos) and objects_layer.get_cell_source_id(tile_pos) == -1
+	var collision_blocked: bool = layers.has("collisions") and layers["collisions"].get_cell_source_id(tile_pos) != -1
+	var permanent_blocked: bool = layers.has("permanent") and layers["permanent"].get_cell_source_id(tile_pos) != -1
+	var objects_blocked: bool = layers.has("objects") and layers["objects"].get_cell_source_id(tile_pos) != -1
+
+	return not (collision_blocked or permanent_blocked or objects_blocked)
+
+func _build_permanent_colliders() -> void:
+	if permanent_colliders_root and permanent_colliders_root.is_inside_tree():
+		permanent_colliders_root.queue_free()
+		permanent_colliders_root = null
+
+	if not layers.has("permanent"):
+		return
+
+	var perm := layers["permanent"] as TileMapLayer
+	permanent_colliders_root = Node2D.new()
+	permanent_colliders_root.name = "PermanentColliders"
+	permanent_colliders_root.visible = false
+	perm.add_child(permanent_colliders_root)
+
+	var tile_size := perm.tile_set.tile_size
+	for cell in perm.get_used_cells():
+		if perm.get_cell_source_id(cell) == -1:
+			continue
+
+		var body := StaticBody2D.new()
+		body.collision_layer = 1
+		body.collision_mask = 1
+		body.position = perm.map_to_local(cell)
+
+		var shape := CollisionShape2D.new()
+		var rect := RectangleShape2D.new()
+		rect.size = Vector2(tile_size.x, tile_size.y)
+		shape.shape = rect
+		body.add_child(shape)
+		permanent_colliders_root.add_child(body)
 
 func find_nearest_free_tile(center: Vector2i) -> Vector2i:
 	for radius in range(1, 4):
@@ -386,6 +442,21 @@ func find_nearest_free_tile(center: Vector2i) -> Vector2i:
 				if is_tile_free(pos):
 					return pos
 	return center
+
+func _collect_permanent_cells(cells: Array[Vector2i], center: Vector2i) -> Dictionary:
+	var blocked := {}
+	if not layers.has("permanent"):
+		return blocked
+	var permanent_layer: TileMapLayer = layers["permanent"]
+	if permanent_layer.get_cell_source_id(center) != -1:
+		blocked[center] = true
+	for cell in cells:
+		if permanent_layer.get_cell_source_id(cell) != -1:
+			blocked[cell] = true
+	return blocked
+
+func _is_permanent_at(tile_pos: Vector2i) -> bool:
+	return layers.has("permanent") and layers["permanent"].get_cell_source_id(tile_pos) != -1
 
 func show_controls():
 	var coords = map.local_to_map(marker.global_position)
