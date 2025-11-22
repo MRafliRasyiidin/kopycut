@@ -434,6 +434,8 @@ func paste():
 		preview_mode = "copy"
 		cut_pending = false
 		cut_tiles.clear()
+		if layers.has("pickables"):
+			layers["pickables"].set_cell(coords, -1)
 		controls.label.text = "Copy"
 		clear_tooltip()
 		
