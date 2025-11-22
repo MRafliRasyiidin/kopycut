@@ -4,31 +4,30 @@
 [ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="2_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://dr6hpw3v2rtpt" path="res://misc/selector.tscn" id="3_6cvei"]
 [ext_resource type="PackedScene" uid="uid://cmbp68jk0yvah" path="res://misc/player.tscn" id="4_que50"]
-[ext_resource type="PackedScene" uid="uid://du18rv8qtgb12" path="res://misc/pause.tscn" id="5_hey2k"]
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="6_172wr"]
-[ext_resource type="Texture2D" uid="uid://bhl5b2enxnvpv" path="res://assets/retry.png" id="7_g2hoc"]
+[ext_resource type="Texture2D" uid="uid://btc4efqdxetvp" path="res://assets/ui/toolbar/toolbar.PNG" id="6_g2hoc"]
+[ext_resource type="Texture2D" uid="uid://d2164pyy675tx" path="res://assets/ui/toolbar/pause.png" id="7_fldb1"]
+[ext_resource type="Texture2D" uid="uid://b0maebfj268a2" path="res://assets/ui/toolbar/retry.png" id="8_guvtl"]
+[ext_resource type="Texture2D" uid="uid://batjdppkm5odf" path="res://assets/ui/toolbar/retry_hover.png" id="9_igmy8"]
+[ext_resource type="Texture2D" uid="uid://u22xg0akaqcd" path="res://assets/ui/toolbar/maximize.png" id="10_wdtqu"]
+[ext_resource type="Texture2D" uid="uid://nniaooyx5wh6" path="res://assets/ui/toolbar/minimize.png" id="11_7qsfm"]
+[ext_resource type="Texture2D" uid="uid://bxhy3e4stryyg" path="res://assets/ui/toolbar/sound.png" id="12_bv48q"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k22d5"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tefeu"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k6a82"]
+texture = ExtResource("8_guvtl")
+texture_margin_left = 100.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1sb0y"]
+texture = ExtResource("9_igmy8")
+texture_margin_left = 100.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tipki"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhnap"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85g3d"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwfin"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya4ey"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6dy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8y0u"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63d2t"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_y0kc7")
@@ -37,7 +36,7 @@ script = ExtResource("1_y0kc7")
 tile_set = ExtResource("2_ne2mo")
 
 [node name="floor" type="TileMapLayer" parent="BaseMap"]
-tile_map_data = PackedByteArray("AAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAACAP7/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAADAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAGAP7/AAAAAAAAAAAGAP3/AAAAAAAAAAAJAAIAAAAAAAAAAAAJAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAAEABwABAAAAAAADAAEABwAAAAAAAAAEAAEABwABAAIAAAAEAAIABwABAAAAAAACAP7/BwACAAEAAAACAP3/BwACAAAAAAADAP3/BwABAAAAAAAEAP3/BwAAAAAAAAAFAP3/BwACAAEAAAADAP7/BwACAAEAAAAEAP7/BwABAAEAAAAFAP7/BwABAAIAAAAGAP7/BwABAAAAAAAGAP3/BwACAAEAAAAJAAIABwACAAAAAAAJAAEABwACAAAAAAAIAAEABwABAAIAAAAHAAEABwACAAAAAAAIAAIABwABAAAAAAAIAAAABwAAAAAAAAAHAAIABwABAAIAAAAHAAAABwACAAAAAAAJAAAABwABAAIAAAACAAAABwACAAEAAAADAAAABwAAAAAAAAAEAAAABwACAAAAAAAFAAIABwABAAAAAAAGAAIABwACAAEAAAA=")
 tile_set = ExtResource("2_ne2mo")
 
 [node name="selector" parent="BaseMap" instance=ExtResource("3_6cvei")]
@@ -46,7 +45,7 @@ tile_set = ExtResource("2_ne2mo")
 position = Vector2(420, 256)
 
 [node name="player" parent="BaseMap" instance=ExtResource("4_que50")]
-position = Vector2(420, 256)
+position = Vector2(310, 140)
 max_speed = 350.0
 acceleration = 700.0
 friction = 1200.0
@@ -60,18 +59,17 @@ tile_map_data = PackedByteArray("AAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAA=")
 tile_set = ExtResource("2_ne2mo")
 
 [node name="collisions" type="TileMapLayer" parent="BaseMap"]
-tile_map_data = PackedByteArray("AAD+////AAACAAAAAAD+/wAAAAACAAAAAAD+/wEAAAACAAAAAAD+/wIAAAACAAAAAAD+/wMAAAACAAAAAAD+/wQAAAACAAAAAAD+/wUAAAACAAAAAAD+/wYAAAACAAAAAAD+/wcAAAACAAAAAAD+/wgAAAACAAAAAAD/////AAACAAAAAAD//wAAAAACAAAAAAD//wEAAAACAAAAAAD//wIAAAACAAAAAAD//wMAAAACAAAAAAD//wQAAAACAAAAAAD//wUAAAACAAAAAAD//wYAAAACAAAAAAD//wcAAAACAAAAAAD//wgAAAACAAAAAAAAAP//AAACAAAAAAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAAAAAAAAAMAAAACAAAAAAAAAAQAAAACAAAAAAAAAAUAAAACAAAAAAAAAAYAAAACAAAAAAAAAAcAAAACAAAAAAAAAAgAAAACAAAAAAABAAMAAAACAAAAAAABAAQAAAACAAAAAAABAAUAAAACAAAAAAABAAYAAAACAAAAAAABAAcAAAACAAAAAAABAAgAAAACAAAAAAACAAMAAAACAAAAAAACAAQAAAACAAAAAAACAAUAAAACAAAAAAACAAYAAAACAAAAAAACAAcAAAACAAAAAAACAAgAAAACAAAAAAADAAYAAAACAAAAAAADAAcAAAACAAAAAAADAAgAAAACAAAAAAAEAAYAAAACAAAAAAAEAAcAAAACAAAAAAAEAAgAAAACAAAAAAAFAAYAAAACAAAAAAAFAAcAAAACAAAAAAAFAAgAAAACAAAAAAAGAAYAAAACAAAAAAAGAAcAAAACAAAAAAAGAAgAAAACAAAAAAAHAAYAAAACAAAAAAAHAAcAAAACAAAAAAAHAAgAAAACAAAAAAAIAAYAAAACAAAAAAAIAAcAAAACAAAAAAAIAAgAAAACAAAAAAAJAAYAAAACAAAAAAAJAAcAAAACAAAAAAAJAAgAAAACAAAAAAAKAAYAAAACAAAAAAAKAAcAAAACAAAAAAAKAAgAAAACAAAAAAAJAAUAAAACAAAAAAAKAAMAAAACAAAAAAAKAAQAAAACAAAAAAAKAAUAAAACAAAAAAALAAMAAAACAAAAAAALAAQAAAACAAAAAAALAAUAAAACAAAAAAALAAYAAAACAAAAAAALAAcAAAACAAAAAAALAAgAAAACAAAAAAAMAAMAAAACAAAAAAAMAAQAAAACAAAAAAAMAAUAAAACAAAAAAAMAAYAAAACAAAAAAAMAAcAAAACAAAAAAAMAAgAAAACAAAAAAANAAMAAAACAAAAAAANAAQAAAACAAAAAAANAAUAAAACAAAAAAANAAYAAAACAAAAAAANAAcAAAACAAAAAAANAAgAAAACAAAAAAAOAAMAAAACAAAAAAAOAAQAAAACAAAAAAAOAAUAAAACAAAAAAAOAAYAAAACAAAAAAAOAAcAAAACAAAAAAAOAAgAAAACAAAAAAD+//3/AAACAAAAAAD+//7/AAACAAAAAAD///3/AAACAAAAAAD///7/AAACAAAAAAAAAP3/AAACAAAAAAAAAP7/AAACAAAAAAABAP3/AAACAAAAAAABAP7/AAACAAAAAAABAP//AAACAAAAAAABAAAAAAACAAAAAAACAP//AAACAAAAAAADAP//AAACAAAAAAAEAP//AAACAAAAAAAFAP//AAACAAAAAAAFAAAAAAACAAAAAAAGAP//AAACAAAAAAAGAAAAAAACAAAAAAAHAP3/AAACAAAAAAAHAP7/AAACAAAAAAAHAP//AAACAAAAAAAIAP3/AAACAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAAAAAAJAP3/AAACAAAAAAAJAP7/AAACAAAAAAAJAP//AAACAAAAAAAKAP3/AAACAAAAAAAKAP7/AAACAAAAAAAKAP//AAACAAAAAAAKAAAAAAACAAAAAAALAP3/AAACAAAAAAALAP7/AAACAAAAAAALAP//AAACAAAAAAALAAAAAAACAAAAAAAMAP3/AAACAAAAAAAMAP7/AAACAAAAAAAMAP//AAACAAAAAAAMAAAAAAACAAAAAAANAP3/AAACAAAAAAANAP7/AAACAAAAAAANAP//AAACAAAAAAANAAAAAAACAAAAAAAOAP3/AAACAAAAAAAOAP7/AAACAAAAAAAOAP//AAACAAAAAAAOAAAAAAACAAAAAAAPAP3/AAACAAAAAAAPAP7/AAACAAAAAAAPAP//AAACAAAAAAAPAAAAAAACAAAAAAAQAP3/AAACAAAAAAAQAP7/AAACAAAAAAAQAP//AAACAAAAAAAQAAAAAAACAAAAAAALAAEAAAACAAAAAAALAAIAAAACAAAAAAALAAkAAAACAAAAAAAMAAEAAAACAAAAAAAMAAIAAAACAAAAAAAMAAkAAAACAAAAAAANAAEAAAACAAAAAAANAAIAAAACAAAAAAANAAkAAAACAAAAAAAOAAEAAAACAAAAAAAOAAIAAAACAAAAAAAOAAkAAAACAAAAAAAPAAEAAAACAAAAAAAPAAIAAAACAAAAAAAPAAMAAAACAAAAAAAPAAQAAAACAAAAAAAPAAUAAAACAAAAAAAPAAYAAAACAAAAAAAPAAcAAAACAAAAAAAPAAgAAAACAAAAAAAPAAkAAAACAAAAAAAQAAEAAAACAAAAAAAQAAIAAAACAAAAAAAQAAMAAAACAAAAAAAQAAQAAAACAAAAAAAQAAUAAAACAAAAAAAQAAYAAAACAAAAAAAQAAcAAAACAAAAAAAQAAgAAAACAAAAAAAQAAkAAAACAAAAAAADAAUAAAACAAAAAAAEAAUAAAACAAAAAAAFAAUAAAACAAAAAAAGAAUAAAACAAAAAAAHAAUAAAACAAAAAAAIAAUAAAACAAAAAAAKAAIAAAACAAAAAAAKAAEAAAACAAAAAAAGAAEAAAACAAAAAAAFAAEAAAACAAAAAAD+//z/AAACAAAAAAD///z/AAACAAAAAAAAAPz/AAACAAAAAAABAPz/AAACAAAAAAACAPz/AAACAAAAAAADAPz/AAACAAAAAAAEAPz/AAACAAAAAAAFAPz/AAACAAAAAAAGAPz/AAACAAAAAAAHAPz/AAACAAAAAAAIAPz/AAACAAAAAAAJAPz/AAACAAAAAAAKAPz/AAACAAAAAAALAPz/AAACAAAAAAAMAPz/AAACAAAAAAANAPz/AAACAAAAAAAOAPz/AAACAAAAAAAPAPz/AAACAAAAAAAQAPz/AAACAAAAAAAQAPv/AAACAAAAAAAPAPv/AAACAAAAAAAOAPv/AAACAAAAAAANAPv/AAACAAAAAAAMAPv/AAACAAAAAAALAPv/AAACAAAAAAAKAPv/AAACAAAAAAAJAPv/AAACAAAAAAAIAPv/AAACAAAAAAAHAPv/AAACAAAAAAAGAPv/AAACAAAAAAAFAPv/AAACAAAAAAAEAPv/AAACAAAAAAADAPv/AAACAAAAAAACAPv/AAACAAAAAAABAPv/AAACAAAAAAAAAPv/AAACAAAAAAD///v/AAACAAAAAAD+//v/AAACAAAAAAD+//r/AAACAAAAAAD///r/AAACAAAAAAAAAPr/AAACAAAAAAABAPr/AAACAAAAAAACAPr/AAACAAAAAAADAPr/AAACAAAAAAAEAPr/AAACAAAAAAAFAPr/AAACAAAAAAAGAPr/AAACAAAAAAAHAPr/AAACAAAAAAAIAPr/AAACAAAAAAAJAPr/AAACAAAAAAAKAPr/AAACAAAAAAALAPr/AAACAAAAAAAMAPr/AAACAAAAAAANAPr/AAACAAAAAAAOAPr/AAACAAAAAAAPAPr/AAACAAAAAAAQAPr/AAACAAAAAAAQAPn/AAACAAAAAAAPAPn/AAACAAAAAAAOAPn/AAACAAAAAAANAPn/AAACAAAAAAAMAPn/AAACAAAAAAALAPn/AAACAAAAAAAKAPn/AAACAAAAAAD///n/AAACAAAAAAD+//n/AAACAAAAAAAAAPn/AAACAAAAAAABAPn/AAACAAAAAAACAPn/AAACAAAAAAADAPn/AAACAAAAAAAEAPn/AAACAAAAAAAFAPn/AAACAAAAAAAGAPn/AAACAAAAAAAHAPn/AAACAAAAAAAIAPn/AAACAAAAAAAJAPn/AAACAAAAAAD9//n/AAACAAAAAAD9//r/AAACAAAAAAD9//v/AAACAAAAAAD9//z/AAACAAAAAAD9//3/AAACAAAAAAD9//7/AAACAAAAAAD9////AAACAAAAAAD9/wAAAAACAAAAAAD9/wEAAAACAAAAAAD9/wIAAAACAAAAAAD9/wMAAAACAAAAAAD9/wQAAAACAAAAAAD9/wUAAAACAAAAAAD9/wYAAAACAAAAAAD9/wcAAAACAAAAAAD9/wgAAAACAAAAAAD9/wkAAAACAAAAAAD+/wkAAAACAAAAAAD//wkAAAACAAAAAAAAAAkAAAACAAAAAAABAAkAAAACAAAAAAACAAkAAAACAAAAAAADAAkAAAACAAAAAAAEAAkAAAACAAAAAAAFAAkAAAACAAAAAAAGAAkAAAACAAAAAAAHAAkAAAACAAAAAAAIAAkAAAACAAAAAAAJAAkAAAACAAAAAAAKAAkAAAACAAAAAAABAAEAAAACAAAAAAABAAIAAAACAAAAAAACAAIAAAACAAAAAAADAAIAAAACAAAAAAADAAMAAAACAAAAAAADAAQAAAACAAAAAAAEAAMAAAACAAAAAAAFAAMAAAACAAAAAAAGAAMAAAACAAAAAAAHAAMAAAACAAAAAAAIAAMAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAIAAQAAAACAAAAAAAHAAQAAAACAAAAAAAGAAQAAAACAAAAAAAFAAQAAAACAAAAAAAEAAQAAAACAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+////BwAAAAIAAAD+/wAABwAAAAIAAAD+/wEABwAAAAIAAAD+/wIABwAAAAIAAAD+/wMABwAAAAIAAAD+/wQABwAAAAIAAAD+/wUABwAAAAIAAAD+/wYABwAAAAIAAAD+/wcABwAAAAIAAAD+/wgABwAAAAIAAAD/////BwAAAAIAAAD//wAABwAAAAIAAAD//wEABwAAAAIAAAD//wIABwAAAAIAAAD//wMABwAAAAIAAAD//wQABwAAAAIAAAD//wUABwAAAAIAAAD//wYABwAAAAIAAAD//wcABwAAAAIAAAD//wgABwAAAAIAAAAAAP//BwAAAAIAAAAAAAAABwAAAAIAAAAAAAEABwAAAAIAAAAAAAIABwAAAAIAAAAAAAMABwAAAAIAAAAAAAQABwAAAAIAAAAAAAUABwAAAAIAAAAAAAYABwAAAAIAAAAAAAcABwAAAAIAAAAAAAgABwAAAAIAAAABAAMABwAAAAIAAAABAAQABwAAAAIAAAABAAUABwAAAAIAAAABAAYABwAAAAIAAAABAAcABwAAAAIAAAABAAgABwAAAAIAAAACAAMABwAAAAIAAAACAAQABwAAAAIAAAACAAUABwAAAAIAAAACAAYABwAAAAIAAAACAAcABwAAAAIAAAACAAgABwAAAAIAAAADAAYABwAAAAIAAAADAAcABwAAAAIAAAADAAgABwAAAAIAAAAEAAYABwAAAAIAAAAEAAcABwAAAAIAAAAEAAgABwAAAAIAAAAFAAYABwAAAAIAAAAFAAcABwAAAAIAAAAFAAgABwAAAAIAAAAGAAYABwAAAAIAAAAGAAcABwAAAAIAAAAGAAgABwAAAAIAAAAHAAYABwAAAAIAAAAHAAcABwAAAAIAAAAHAAgABwAAAAIAAAAIAAYABwAAAAIAAAAIAAcABwAAAAIAAAAIAAgABwAAAAIAAAAJAAYABwAAAAIAAAAJAAcABwAAAAIAAAAJAAgABwAAAAIAAAAKAAYABwAAAAIAAAAKAAcABwAAAAIAAAAKAAgABwAAAAIAAAAJAAUABwAAAAIAAAAKAAMABwAAAAIAAAAKAAQABwAAAAIAAAAKAAUABwAAAAIAAAALAAMABwAAAAIAAAALAAQABwAAAAIAAAALAAUABwAAAAIAAAALAAYABwAAAAIAAAALAAcABwAAAAIAAAALAAgABwAAAAIAAAAMAAMABwAAAAIAAAAMAAQABwAAAAIAAAAMAAUABwAAAAIAAAAMAAYABwAAAAIAAAAMAAcABwAAAAIAAAAMAAgABwAAAAIAAAANAAMABwAAAAIAAAANAAQABwAAAAIAAAANAAUABwAAAAIAAAANAAYABwAAAAIAAAANAAcABwAAAAIAAAANAAgABwAAAAIAAAAOAAMABwAAAAIAAAAOAAQABwAAAAIAAAAOAAUABwAAAAIAAAAOAAYABwAAAAIAAAAOAAcABwAAAAIAAAAOAAgABwAAAAIAAAD+//3/BwAAAAIAAAD+//7/BwAAAAIAAAD///3/BwAAAAIAAAD///7/BwAAAAIAAAAAAP3/BwAAAAIAAAAAAP7/BwAAAAIAAAABAP3/BwAAAAIAAAABAP7/BwAAAAIAAAABAP//BwAAAAIAAAABAAAABwAAAAIAAAACAP//BwAAAAIAAAADAP//BwAAAAIAAAAEAP//BwAAAAIAAAAFAP//BwAAAAIAAAAFAAAABwAAAAIAAAAGAP//BwAAAAIAAAAGAAAABwAAAAIAAAAHAP3/BwAAAAIAAAAHAP7/BwAAAAIAAAAHAP//BwAAAAIAAAAIAP3/BwAAAAIAAAAIAP7/BwAAAAIAAAAIAP//BwAAAAIAAAAJAP3/BwAAAAIAAAAJAP7/BwAAAAIAAAAJAP//BwAAAAIAAAAKAP3/BwAAAAIAAAAKAP7/BwAAAAIAAAAKAP//BwAAAAIAAAAKAAAABwAAAAIAAAALAP3/BwAAAAIAAAALAP7/BwAAAAIAAAALAP//BwAAAAIAAAALAAAABwAAAAIAAAAMAP3/BwAAAAIAAAAMAP7/BwAAAAIAAAAMAP//BwAAAAIAAAAMAAAABwAAAAIAAAANAP3/BwAAAAIAAAANAP7/BwAAAAIAAAANAP//BwAAAAIAAAANAAAABwAAAAIAAAAOAP3/BwAAAAIAAAAOAP7/BwAAAAIAAAAOAP//BwAAAAIAAAAOAAAABwAAAAIAAAAPAP3/BwAAAAIAAAAPAP7/BwAAAAIAAAAPAP//BwAAAAIAAAAPAAAABwAAAAIAAAAQAP3/BwAAAAIAAAAQAP7/BwAAAAIAAAAQAP//BwAAAAIAAAAQAAAABwAAAAIAAAALAAEABwAAAAIAAAALAAIABwAAAAIAAAALAAkABwAAAAIAAAAMAAEABwAAAAIAAAAMAAIABwAAAAIAAAAMAAkABwAAAAIAAAANAAEABwAAAAIAAAANAAIABwAAAAIAAAANAAkABwAAAAIAAAAOAAEABwAAAAIAAAAOAAIABwAAAAIAAAAOAAkABwAAAAIAAAAPAAEABwAAAAIAAAAPAAIABwAAAAIAAAAPAAMABwAAAAIAAAAPAAQABwAAAAIAAAAPAAUABwAAAAIAAAAPAAYABwAAAAIAAAAPAAcABwAAAAIAAAAPAAgABwAAAAIAAAAPAAkABwAAAAIAAAAQAAEABwAAAAIAAAAQAAIABwAAAAIAAAAQAAMABwAAAAIAAAAQAAQABwAAAAIAAAAQAAUABwAAAAIAAAAQAAYABwAAAAIAAAAQAAcABwAAAAIAAAAQAAgABwAAAAIAAAAQAAkABwAAAAIAAAADAAUABwAAAAIAAAAEAAUABwAAAAIAAAAFAAUABwAAAAIAAAAGAAUABwAAAAIAAAAHAAUABwAAAAIAAAAIAAUABwAAAAIAAAAKAAIABwAAAAIAAAAKAAEABwAAAAIAAAAGAAEABwAAAAIAAAAFAAEABwAAAAIAAAD+//z/BwAAAAIAAAD///z/BwAAAAIAAAAAAPz/BwAAAAIAAAABAPz/BwAAAAIAAAACAPz/BwAAAAIAAAADAPz/BwAAAAIAAAAEAPz/BwAAAAIAAAAFAPz/BwAAAAIAAAAGAPz/BwAAAAIAAAAHAPz/BwAAAAIAAAAIAPz/BwAAAAIAAAAJAPz/BwAAAAIAAAAKAPz/BwAAAAIAAAALAPz/BwAAAAIAAAAMAPz/BwAAAAIAAAANAPz/BwAAAAIAAAAOAPz/BwAAAAIAAAAPAPz/BwAAAAIAAAAQAPz/BwAAAAIAAAAQAPv/BwAAAAIAAAAPAPv/BwAAAAIAAAAOAPv/BwAAAAIAAAANAPv/BwAAAAIAAAAMAPv/BwAAAAIAAAALAPv/BwAAAAIAAAAKAPv/BwAAAAIAAAAJAPv/BwAAAAIAAAAIAPv/BwAAAAIAAAAHAPv/BwAAAAIAAAAGAPv/BwAAAAIAAAAFAPv/BwAAAAIAAAAEAPv/BwAAAAIAAAADAPv/BwAAAAIAAAACAPv/BwAAAAIAAAABAPv/BwAAAAIAAAAAAPv/BwAAAAIAAAD///v/BwAAAAIAAAD+//v/BwAAAAIAAAD+//r/BwAAAAIAAAD///r/BwAAAAIAAAAAAPr/BwAAAAIAAAABAPr/BwAAAAIAAAACAPr/BwAAAAIAAAADAPr/BwAAAAIAAAAEAPr/BwAAAAIAAAAFAPr/BwAAAAIAAAAGAPr/BwAAAAIAAAAHAPr/BwAAAAIAAAAIAPr/BwAAAAIAAAAJAPr/BwAAAAIAAAAKAPr/BwAAAAIAAAALAPr/BwAAAAIAAAAMAPr/BwAAAAIAAAANAPr/BwAAAAIAAAAOAPr/BwAAAAIAAAAPAPr/BwAAAAIAAAAQAPr/BwAAAAIAAAAQAPn/BwAAAAIAAAAPAPn/BwAAAAIAAAAOAPn/BwAAAAIAAAANAPn/BwAAAAIAAAAMAPn/BwAAAAIAAAALAPn/BwAAAAIAAAAKAPn/BwAAAAIAAAD///n/BwAAAAIAAAD+//n/BwAAAAIAAAAAAPn/BwAAAAIAAAABAPn/BwAAAAIAAAACAPn/BwAAAAIAAAADAPn/BwAAAAIAAAAEAPn/BwAAAAIAAAAFAPn/BwAAAAIAAAAGAPn/BwAAAAIAAAAHAPn/BwAAAAIAAAAIAPn/BwAAAAIAAAAJAPn/BwAAAAIAAAD9//n/BwAAAAIAAAD9//r/BwAAAAIAAAD9//v/BwAAAAIAAAD9//z/BwAAAAIAAAD9//3/BwAAAAIAAAD9//7/BwAAAAIAAAD9////BwAAAAIAAAD9/wAABwAAAAIAAAD9/wEABwAAAAIAAAD9/wIABwAAAAIAAAD9/wMABwAAAAIAAAD9/wQABwAAAAIAAAD9/wUABwAAAAIAAAD9/wYABwAAAAIAAAD9/wcABwAAAAIAAAD9/wgABwAAAAIAAAD9/wkABwAAAAIAAAD+/wkABwAAAAIAAAD//wkABwAAAAIAAAAAAAkABwAAAAIAAAABAAkABwAAAAIAAAACAAkABwAAAAIAAAADAAkABwAAAAIAAAAEAAkABwAAAAIAAAAFAAkABwAAAAIAAAAGAAkABwAAAAIAAAAHAAkABwAAAAIAAAAIAAkABwAAAAIAAAAJAAkABwAAAAIAAAAKAAkABwAAAAIAAAABAAEABwAAAAIAAAABAAIABwAAAAIAAAACAAIABwAAAAIAAAADAAIABwAAAAIAAAADAAMABwAAAAIAAAADAAQABwAAAAIAAAAEAAMABwAAAAIAAAAFAAMABwAAAAIAAAAGAAMABwAAAAIAAAAHAAMABwAAAAIAAAAIAAMABwAAAAIAAAAJAAMABwAAAAIAAAAJAAQABwAAAAIAAAAIAAQABwAAAAIAAAAHAAQABwAAAAIAAAAGAAQABwAAAAIAAAAFAAQABwAAAAIAAAAEAAQABwAAAAIAAAA=")
 tile_set = ExtResource("2_ne2mo")
 
 [node name="portal" type="TileMapLayer" parent="BaseMap"]
 tile_map_data = PackedByteArray("AAAGAP3/BAAAAAAAAAA=")
 tile_set = ExtResource("2_ne2mo")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="pause" parent="CanvasLayer" instance=ExtResource("5_hey2k")]
-
-[node name="Control" parent="CanvasLayer" instance=ExtResource("6_172wr")]
+[node name="Control" parent="UI" instance=ExtResource("6_172wr")]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -81,26 +79,115 @@ offset_right = 61.0
 offset_bottom = -307.0
 grow_vertical = 0
 
-[node name="Button" type="Button" parent="CanvasLayer"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -240.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = 244.0
-grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tbgi4")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tefeu")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_o6xl0")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tipki")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_85g3d")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_choun")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ya4ey")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_eb6dy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_trceg")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a8y0u")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
-icon = ExtResource("7_g2hoc")
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -1280.0
+offset_top = -1080.0
+offset_right = 1280.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_g2hoc")
+stretch_mode = 3
 
-[connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_button_button_up"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -113.0
+offset_right = 50.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Pause" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k22d5")
+icon = ExtResource("7_fldb1")
+
+[node name="Retry" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_k6a82")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1sb0y")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_1sb0y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1sb0y")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_1sb0y")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_1sb0y")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_1sb0y")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_vhnap")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_vwfin")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_63d2t")
+
+[node name="Fullscreen" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k22d5")
+icon = ExtResource("10_wdtqu")
+
+[node name="Windowed" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k22d5")
+icon = ExtResource("11_7qsfm")
+
+[node name="Volume" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_k22d5")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_k22d5")
+icon = ExtResource("12_bv48q")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_up" from="UI/HBoxContainer/Retry" to="." method="_on_retry_button_up"]

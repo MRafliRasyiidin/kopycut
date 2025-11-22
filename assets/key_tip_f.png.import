@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sj7kckmudp6n"
-path="res://.godot/imported/Frame 8.png-e59a3884dbcf4edf51feb8f4a416f3f1.ctex"
+uid="uid://c3y1s64jt3icl"
+path="res://.godot/imported/key_tip_f.png-2c2935923721467683b97709057e8c2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Frame 8.png"
-dest_files=["res://.godot/imported/Frame 8.png-e59a3884dbcf4edf51feb8f4a416f3f1.ctex"]
+source_file="res://assets/key_tip_f.png"
+dest_files=["res://.godot/imported/key_tip_f.png-2c2935923721467683b97709057e8c2e.ctex"]
 
 [params]
 

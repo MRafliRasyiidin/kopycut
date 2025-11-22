@@ -6,8 +6,10 @@ extends CharacterBody2D
 @onready var marker: Marker2D = $target/Marker2D2
 @onready var selector:Node2D = $"../selector"
 @onready var tooltip: Node2D = $"../tooltip"
-@onready var controls: Control = $"../../CanvasLayer/Control"
+@onready var controls: Control = $"../../UI/Control"
 @onready var portal: TileMapLayer = $"../portal"
+@onready var anim: AnimationPlayer = $AnimationPlayer
+
 var permanent_colliders_root: Node2D = null
 
 
@@ -57,7 +59,7 @@ var preview_mode: String = "copy"
 var paste_mode: String = "copy"
 
 func _ready() -> void:
-	
+	anim.play("idle")
 	print(selector)
 	# Get tilemap layers
 	for child in map.get_children():
@@ -72,12 +74,15 @@ func _physics_process(delta: float) -> void:
 	var input_dir = get_input_direction()
 
 	if input_dir != Vector2.ZERO:
+		if anim.current_animation != "walk":
+			anim.play("walk")
 		# Accelerate toward target direction
 		velocity = velocity.move_toward(input_dir.normalized() * max_speed, acceleration * delta)
 	else:
 		# Apply friction when no input
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-
+		if anim.current_animation != "idle":
+			anim.play("idle")
 	move_and_slide()
 	
 	# Snap based on last_direction
@@ -92,9 +97,11 @@ func _physics_process(delta: float) -> void:
 			Vector2.LEFT:
 			#target.rotation = PI
 				target.rotation = PI / 2
+				sprite.flip_h = true
 			Vector2.RIGHT:
 				#target.rotation = 0.0
 				target.rotation = -PI / 2
+				sprite.flip_h = false
 
 
 @warning_ignore("unused_parameter")
