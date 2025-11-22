@@ -51,6 +51,11 @@ var saved_layer:Dictionary = {
 }
 var saved:bool = false
 
+var cut_pending: bool = false
+var cut_tiles: Array[Vector2i] = []
+var preview_mode: String = "copy"
+var paste_mode: String = "copy"
+
 func _ready() -> void:
 	
 	print(selector)
@@ -136,8 +141,8 @@ func _input(event: InputEvent) -> void:
 		pickup()
 	if event.is_action_pressed("copy"):
 		copy()
-	#if event.is_action_pressed("cut"):
-		#cut()
+	if event.is_action_pressed("cut"):
+		cut()
 	if event.is_action_pressed("paste"):
 		paste()
 	if event.is_action_pressed("radius"):
@@ -200,6 +205,18 @@ func pickup():
 					print("PICKED: ", object_held)
 					pickables_layer.set_cell(coords, -1)
 					holding = true
+					
+					# Execute the cut removal when picking up after cut
+					if cut_pending:
+						for layer: TileMapLayer in layers.values():
+							if layer.name == "pickables":
+								continue
+							for cell in cut_tiles:
+								layer.set_cell(cell, -1)
+						cut_pending = false
+						cut_tiles.clear()
+						# NOTE: Do NOT reset paste_mode here - it needs to stay "cut" for paste
+						print("Cut tiles removed")
 				else:
 					print("No tile found under player on 'pickables' layer.")
 					holding = false
@@ -210,6 +227,7 @@ func pickup():
 				
 func _tooltip():
 	var coords: Vector2i = map.local_to_map(marker.global_position)
+	var player_tile: Vector2i = map.local_to_map(global_position)
 	var x = layers["pickables"].get_cell_source_id(coords)
 
 	update_disk_radius(coords)
@@ -217,7 +235,15 @@ func _tooltip():
 	if x != -1:
 		if show_tooltip:
 			show_tooltip = false
-			for r in disk_radius:
+			
+			# Choose which tiles to preview based on mode
+			var preview_tiles: Array[Vector2i]
+			if preview_mode == "cut":
+				preview_tiles = get_opposite_tiles(player_tile, coords)
+			else:
+				preview_tiles.assign(disk_radius)  # Copy mode shows all 8 tiles
+			
+			for r in preview_tiles:
 				var expand = preload("res://misc/expand.tscn").instantiate()
 				tooltip.add_child(expand)
 				expand.global_position = map.map_to_local(r)
@@ -243,6 +269,12 @@ func copy():
 
 	var blocked_cells := _collect_permanent_cells(disk_radius, coords)
 
+	# Reset cut state if switching to copy
+	cut_pending = false
+	cut_tiles.clear()
+	preview_mode = "copy"
+	paste_mode = "copy"
+	clear_tooltip()
 	saved_disk.clear()
 	for layer: TileMapLayer in layers.values():
 		if layer.name in NON_COPYABLE_LAYERS:
@@ -264,7 +296,77 @@ func copy():
 		saved_disk.append(data)
 	saved = true
 	controls.label.text = "Paste"
-	print("Saved surroundings")
+	print("Copy mode - paste_mode set to: ", paste_mode)
+
+func get_opposite_tiles(player_tile: Vector2i, disk_tile: Vector2i) -> Array[Vector2i]:
+	var tiles: Array[Vector2i] = []
+	var diff = player_tile - disk_tile
+	
+	# Player is to the LEFT of disk (tile 4) -> cut RIGHT side (3, 6, 9)
+	if diff.x < 0 and diff.y == 0:
+		tiles.append(disk_tile + Vector2i(1, -1))  # top-right
+		tiles.append(disk_tile + Vector2i(1, 0))   # right
+		tiles.append(disk_tile + Vector2i(1, 1))   # bottom-right
+	# Player is to the RIGHT of disk (tile 6) -> cut LEFT side (1, 4, 7)
+	elif diff.x > 0 and diff.y == 0:
+		tiles.append(disk_tile + Vector2i(-1, -1)) # top-left
+		tiles.append(disk_tile + Vector2i(-1, 0))  # left
+		tiles.append(disk_tile + Vector2i(-1, 1))  # bottom-left
+	# Player is ABOVE disk (tile 2) -> cut BOTTOM side (7, 8, 9)
+	elif diff.y < 0 and diff.x == 0:
+		tiles.append(disk_tile + Vector2i(-1, 1))  # bottom-left
+		tiles.append(disk_tile + Vector2i(0, 1))   # bottom
+		tiles.append(disk_tile + Vector2i(1, 1))   # bottom-right
+	# Player is BELOW disk (tile 8) -> cut TOP side (1, 2, 3)
+	elif diff.y > 0 and diff.x == 0:
+		tiles.append(disk_tile + Vector2i(-1, -1)) # top-left
+		tiles.append(disk_tile + Vector2i(0, -1))  # top
+		tiles.append(disk_tile + Vector2i(1, -1))  # top-right
+	else:
+		# Player is diagonal or on the disk - don't cut
+		print("Player must be directly adjacent (not diagonal) to cut!")
+	
+	return tiles
+
+func cut():
+	var player_tile: Vector2i = map.local_to_map(global_position)
+	var coords: Vector2i = map.local_to_map(marker.global_position)
+	update_disk_radius(coords)
+
+	if layers["pickables"].get_cell_source_id(coords) == -1:
+		print("No Quanta Disk found!")
+		return
+	
+	# Get the 3 tiles opposite to the player
+	cut_tiles = get_opposite_tiles(player_tile, coords)
+	
+	if cut_tiles.is_empty():
+		return
+	
+	# Save only the 3 cut tiles (not the full radius like copy)
+	saved_disk.clear()
+	for layer: TileMapLayer in layers.values():
+		var data: Dictionary = {
+			"layer": layer,
+			"source_id": [],
+			"atlas": [],
+			"alt": [],
+			"pos": []
+		}
+		for cell in cut_tiles:
+			data["source_id"].append(layer.get_cell_source_id(cell))
+			data["atlas"].append(layer.get_cell_atlas_coords(cell))
+			data["alt"].append(layer.get_cell_alternative_tile(cell))
+			data["pos"].append(cell - coords)
+		saved_disk.append(data)
+	
+	saved = true
+	cut_pending = true
+	preview_mode = "cut"  # Switch to cut preview
+	paste_mode = "cut"  # Paste will use opposite tiles
+	clear_tooltip()  # Force tooltip refresh
+	controls.label.text = "Paste"
+	print("Cut prepared - pick up disk to remove tiles: ", cut_tiles)
 	
 func paste():
 	var player_tile = map.local_to_map(global_position)
@@ -275,21 +377,49 @@ func paste():
 		print("No Quanta Disk found!")
 		return
 
-	if saved:  # Load
-		for data: Dictionary in saved_disk:
-			var layer: TileMapLayer = data["layer"]
-			if layer.name in NON_COPYABLE_LAYERS:
-				continue
-			var source = data["source_id"]
-			var atlas = data["atlas"]
-			var alt = data["alt"]
-			var pos = data["pos"]
-
-			for i in pos.size():
-				var dest: Vector2i = coords + pos[i]
-				if _is_permanent_at(dest):
+	if saved:
+		print("Pasting with paste_mode: ", paste_mode)
+		
+		if paste_mode == "cut":
+			# Cut-paste: place tiles on opposite side of player
+			var paste_tiles = get_opposite_tiles(player_tile, coords)
+			
+			if paste_tiles.is_empty():
+				return
+			
+			for data: Dictionary in saved_disk:
+				var layer: TileMapLayer = data["layer"]
+				if layer.name in NON_COPYABLE_LAYERS:
 					continue
-				layer.set_cell(dest, source[i], atlas[i], alt[i])
+				var source = data["source_id"]
+				var atlas = data["atlas"]
+				var alt = data["alt"]
+
+				for i in min(paste_tiles.size(), source.size()):
+					var dest: Vector2i = paste_tiles[i]
+					if _is_permanent_at(dest):
+						continue
+					layer.set_cell(dest, source[i], atlas[i], alt[i])
+			
+			print("Pasted to opposite side (cut mode)")
+		else:
+			# Copy-paste: use original relative positions
+			for data: Dictionary in saved_disk:
+				var layer: TileMapLayer = data["layer"]
+				if layer.name in NON_COPYABLE_LAYERS:
+					continue
+				var source = data["source_id"]
+				var atlas = data["atlas"]
+				var alt = data["alt"]
+				var pos = data["pos"]
+
+				for i in pos.size():
+					var dest: Vector2i = coords + pos[i]
+					if _is_permanent_at(dest):
+						continue
+					layer.set_cell(dest, source[i], atlas[i], alt[i])
+			
+			print("Pasted with relative positions (copy mode)")
 		
 		saved = false
 		saved_disk.clear()
@@ -300,9 +430,13 @@ func paste():
 			"alt": [],
 			"pos": []
 		}
+		paste_mode = "copy"  # Reset to default
+		preview_mode = "copy"
+		cut_pending = false
+		cut_tiles.clear()
 		controls.label.text = "Copy"
-		print("Loaded surroundings")
-
+		clear_tooltip()
+		
 		if not is_tile_free(player_tile):
 			print("Player stuck! Searching for free tile...")
 			var safe_tile = find_nearest_free_tile(player_tile)
