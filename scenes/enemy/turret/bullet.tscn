@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqkrhyatmx8vs"]
+
+[ext_resource type="Texture2D" uid="uid://npgdrx2j3pd6" path="res://icon.svg" id="1_ae25n"]
+[ext_resource type="Script" uid="uid://d3fxcmmkqbeko" path="res://scenes/enemy/turret/bullet.gd" id="1_bd4rm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bd4rm"]
+radius = 7.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_bd4rm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_ae25n")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bd4rm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_screen_exited"]

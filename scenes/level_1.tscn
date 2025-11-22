@@ -1,10 +1,12 @@
-[gd_scene load_steps=19 format=4 uid="uid://d3wyagabib44c"]
+[gd_scene load_steps=21 format=4 uid="uid://d3wyagabib44c"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_pa8r4"]
+[ext_resource type="Script" uid="uid://2q2p0alw8qfi" path="res://main.gd" id="1_pa8r4"]
 [ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="2_15mv3"]
 [ext_resource type="PackedScene" uid="uid://dr6hpw3v2rtpt" path="res://misc/selector.tscn" id="3_e3sih"]
 [ext_resource type="PackedScene" uid="uid://cmbp68jk0yvah" path="res://misc/player.tscn" id="4_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://du18rv8qtgb12" path="res://misc/pause.tscn" id="5_2os1m"]
+[ext_resource type="PackedScene" uid="uid://bpl1m7f7i1cru" path="res://scenes/enemy/turret/turret.tscn" id="5_15mv3"]
+[ext_resource type="PackedScene" uid="uid://cqkrhyatmx8vs" path="res://scenes/enemy/turret/bullet.tscn" id="6_e3sih"]
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="6_go7sj"]
 [ext_resource type="Texture2D" uid="uid://bhl5b2enxnvpv" path="res://assets/retry.png" id="7_7gny6"]
 
@@ -45,17 +47,21 @@ tile_set = ExtResource("2_15mv3")
 [node name="tooltip" type="Node2D" parent="BaseMap"]
 position = Vector2(420, 256)
 
-[node name="player" parent="BaseMap" instance=ExtResource("4_2y5yt")]
+[node name="player" parent="BaseMap" groups=["Player"] instance=ExtResource("4_2y5yt")]
 position = Vector2(420, 256)
 max_speed = 350.0
 acceleration = 700.0
 friction = 1200.0
 
 [node name="pickables" type="TileMapLayer" parent="BaseMap"]
-tile_map_data = PackedByteArray("AAAEAAEAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAEAAEAAgAAAAAAAAABAAEAAgAAAAAAAAA=")
 tile_set = ExtResource("2_15mv3")
 
+[node name="Turret" parent="BaseMap" instance=ExtResource("5_15mv3")]
+ammo = ExtResource("6_e3sih")
+
 [node name="objects" type="TileMapLayer" parent="BaseMap"]
+tile_map_data = PackedByteArray("AAACAAAAAQAAAAAAAAAFAAAABQAAAAAAAgA=")
 tile_set = ExtResource("2_15mv3")
 
 [node name="collisions" type="TileMapLayer" parent="BaseMap"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpl1m7f7i1cru"]
+
+[ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="1_foviu"]
+[ext_resource type="Script" uid="uid://cxycmhpe8kgnh" path="res://scenes/enemy/turret/turret.gd" id="2_2f2ld"]
+
+[node name="Turret" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_foviu")
+script = ExtResource("2_2f2ld")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
