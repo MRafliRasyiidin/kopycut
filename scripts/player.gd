@@ -130,8 +130,12 @@ func _input(event: InputEvent) -> void:
 	# Picking
 	if event.is_action_pressed("pick"):
 		pickup()
-	if event.is_action_pressed("save_load"):
-		saveload()
+	if event.is_action_pressed("copy"):
+		copy()
+	#if event.is_action_pressed("cut"):
+		#cut()
+	if event.is_action_pressed("paste"):
+		paste()
 	if event.is_action_pressed("radius"):
 		change_radius()
 
@@ -216,7 +220,35 @@ func clear_tooltip():
 		for child in tooltip.get_children():
 				child.queue_free()
 
-func saveload():
+func copy():
+	var player_tile = map.local_to_map(global_position)
+	var coords: Vector2i = map.local_to_map(marker.global_position)
+	update_disk_radius(coords)
+
+	if layers["pickables"].get_cell_source_id(coords) == -1:
+		print("No Quanta Disk found!")
+		return	
+		
+	saved_disk.clear()
+	for layer: TileMapLayer in layers.values():
+		var data: Dictionary = {
+			"layer": layer,
+			"source_id": [],
+			"atlas": [],
+			"alt": [],
+			"pos": []
+		}
+		for cell in disk_radius:
+			data["source_id"].append(layer.get_cell_source_id(cell))
+			data["atlas"].append(layer.get_cell_atlas_coords(cell))
+			data["alt"].append(layer.get_cell_alternative_tile(cell))
+			data["pos"].append(cell - coords)
+		saved_disk.append(data)
+	saved = true
+	controls.label.text = "Paste"
+	print("Saved surroundings")
+	
+func paste():
 	var player_tile = map.local_to_map(global_position)
 	var coords: Vector2i = map.local_to_map(marker.global_position)
 	update_disk_radius(coords)
@@ -235,8 +267,8 @@ func saveload():
 
 			for i in pos.size():
 				layer.set_cell(coords + pos[i], source[i], atlas[i], alt[i])
-
-		saved = true
+		
+		saved = false
 		saved_disk.clear()
 		saved_layer = {
 			"layer": "",
@@ -253,27 +285,62 @@ func saveload():
 			global_position = map.map_to_local(safe_tile)
 			print("Moved player to: ", safe_tile)
 
-	else:  # Save
-		saved_disk.clear()
-		for layer: TileMapLayer in layers.values():
-			var data: Dictionary = {
-				"layer": layer,
-				"source_id": [],
-				"atlas": [],
-				"alt": [],
-				"pos": []
-			}
-			for cell in disk_radius:
-				data["source_id"].append(layer.get_cell_source_id(cell))
-				data["atlas"].append(layer.get_cell_atlas_coords(cell))
-				data["alt"].append(layer.get_cell_alternative_tile(cell))
-				data["pos"].append(cell - coords)
-			saved_disk.append(data)
-		saved = true
-		controls.label.text = "Load"
-		print("Saved surroundings")
-		
-
+#func saveload():
+	#var player_tile = map.local_to_map(global_position)
+	#var coords: Vector2i = map.local_to_map(marker.global_position)
+	#update_disk_radius(coords)
+#
+	#if layers["pickables"].get_cell_source_id(coords) == -1:
+		#print("No Quanta Disk found!")
+		#return
+#
+	#if saved:  # Load
+		#for data: Dictionary in saved_disk:
+			#var layer: TileMapLayer = data["layer"]
+			#var source = data["source_id"]
+			#var atlas = data["atlas"]
+			#var alt = data["alt"]
+			#var pos = data["pos"]
+#
+			#for i in pos.size():
+				#layer.set_cell(coords + pos[i], source[i], atlas[i], alt[i])
+#
+		#saved = true
+		#saved_disk.clear()
+		#saved_layer = {
+			#"layer": "",
+			#"source_id": [],
+			#"atlas": [],
+			#"alt": [],
+			#"pos": []
+		#}
+		#print("Loaded surroundings")
+#
+		#if not is_tile_free(player_tile):
+			#print("Player stuck! Searching for free tile...")
+			#var safe_tile = find_nearest_free_tile(player_tile)
+			#global_position = map.map_to_local(safe_tile)
+			#print("Moved player to: ", safe_tile)
+#
+	#else:  # Save
+		#saved_disk.clear()
+		#for layer: TileMapLayer in layers.values():
+			#var data: Dictionary = {
+				#"layer": layer,
+				#"source_id": [],
+				#"atlas": [],
+				#"alt": [],
+				#"pos": []
+			#}
+			#for cell in disk_radius:
+				#data["source_id"].append(layer.get_cell_source_id(cell))
+				#data["atlas"].append(layer.get_cell_atlas_coords(cell))
+				#data["alt"].append(layer.get_cell_alternative_tile(cell))
+				#data["pos"].append(cell - coords)
+			#saved_disk.append(data)
+		#saved = true
+		#controls.label.text = "Load"
+		#print("Saved surroundings")
 
 func change_radius():
 	var coords := map.local_to_map(marker.global_position)

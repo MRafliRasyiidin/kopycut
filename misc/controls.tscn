@@ -28,7 +28,7 @@ expand_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_lgv3t")
 theme_override_font_sizes/font_size = 80
-text = "Save"
+text = "Copy"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
