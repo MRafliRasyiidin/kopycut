@@ -8,27 +8,27 @@
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="6_7ewpb"]
 [ext_resource type="Texture2D" uid="uid://bhl5b2enxnvpv" path="res://assets/retry.png" id="7_py6g0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tefeu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tipki"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85g3d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya4ey"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6dy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a8y0u"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkv2x"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_trceg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eb6dy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ya4ey"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_choun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_85g3d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tipki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tefeu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbgi4"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_x7blo")
@@ -68,9 +68,13 @@ tile_map_data = PackedByteArray("AAAHAAYABAAAAAAAAAA=")
 tile_set = ExtResource("2_qsmat")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="pause" parent="CanvasLayer" instance=ExtResource("5_rr1tt")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("6_7ewpb")]
 anchors_preset = 2
@@ -91,17 +95,17 @@ offset_top = 32.0
 offset_right = -32.0
 offset_bottom = 244.0
 grow_horizontal = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_tbgi4")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tefeu")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_o6xl0")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tipki")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_85g3d")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_choun")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_ya4ey")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_eb6dy")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_trceg")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a8y0u")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_jkv2x")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_a8y0u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_trceg")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_eb6dy")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ya4ey")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_choun")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_85g3d")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_tipki")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o6xl0")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_tefeu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tbgi4")
 icon = ExtResource("7_py6g0")
 
 [connection signal="button_up" from="CanvasLayer/Button" to="." method="_on_button_button_up"]
