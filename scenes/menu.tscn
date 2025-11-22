@@ -3,42 +3,36 @@
 [ext_resource type="Script" uid="uid://b5bdi05tpnyce" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_con2f"]
 
-[node name="menu" type="Node2D"]
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("1_vjb58")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -666.0
-offset_top = -604.0
-offset_right = 2854.0
-offset_bottom = 1617.0
-color = Color(0, 0, 0, 1)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -42.5
-offset_right = 64.0
-offset_bottom = 42.5
+offset_left = 669.5
+offset_top = 400.0
+offset_right = 1250.5
+offset_bottom = 680.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_con2f")
 theme_override_font_sizes/font_size = 200
-text = "Quanta Disk"
+text = "Kopy Cut"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_con2f")
 theme_override_font_sizes/font_size = 80
 text = "Play"
 
-[connection signal="button_up" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_button_button_up"]
