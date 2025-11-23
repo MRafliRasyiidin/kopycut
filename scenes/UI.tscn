@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cq8rg7il3unrw"]
+[gd_scene load_steps=38 format=3 uid="uid://cq8rg7il3unrw"]
 
 [ext_resource type="Script" uid="uid://b4aq7yj2wpwpr" path="res://scripts/ui.gd" id="1_flkkw"]
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="1_ua6yw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c3lqt5yphrhwb" path="res://assets/ui/volume_slider/Circle.PNG" id="17_hu0pd"]
 [ext_resource type="Texture2D" uid="uid://ex0v3w3qxdns" path="res://assets/ui/volume_slider/Slider blue.PNG" id="18_o5ifv"]
 [ext_resource type="Texture2D" uid="uid://bv2er5x30ix7l" path="res://assets/ui/volume_slider/Slider pink.PNG" id="19_s2vcx"]
+[ext_resource type="FontFile" uid="uid://bjuuraa1s12ne" path="res://assets/font/Pangolin-Regular.ttf" id="20_o5ifv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ukj8e"]
 texture = ExtResource("3_xpksx")
@@ -208,7 +209,6 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7nomh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="VolumeSlider" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -273,6 +273,40 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_h3f0
 max_value = 1.5
 step = 0.05
 value = 1.0
+
+[node name="Level" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 531.0
+offset_top = 444.0
+offset_right = 643.0
+offset_bottom = 507.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.28627452, 0.18039216, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("20_o5ifv")
+theme_override_font_sizes/font_size = 50
+text = "Level"
+
+[node name="LevelNum" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 728.0
+offset_top = 444.0
+offset_right = 762.0
+offset_bottom = 507.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.28627452, 0.18039216, 0.41960785, 1)
+theme_override_fonts/font = ExtResource("20_o5ifv")
+theme_override_font_sizes/font_size = 50
+text = "0"
 
 [connection signal="button_up" from="HBoxContainer/Pause" to="." method="_on_pause_button_up"]
 [connection signal="button_up" from="HBoxContainer/Fullscreen" to="." method="_on_fullscreen_button_up"]

@@ -3,10 +3,12 @@ extends CanvasLayer
 @onready var volume_slider: Control = $VolumeSlider
 @onready var music_slider: HSlider = $VolumeSlider/VBoxContainer/MusicSlider
 @onready var sfx_slider: HSlider = $VolumeSlider/VBoxContainer/SFXSlider
+@onready var levelNum: Label = $LevelNum
 
 func _ready() -> void:
 	music_slider.value = db_to_linear(AudioServer.get_bus_volume_db(2))
 	sfx_slider.value = db_to_linear(AudioServer.get_bus_volume_db(1))
+	levelNum.text = str(GlobalState.level)
 
 func _on_pause_button_up() -> void:
 	if get_tree().paused:

@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4erer35a6041"]
+
+[ext_resource type="Shader" uid="uid://ck8s2dht6nrqt" path="res://shaders/scrolling_background.gdshader" id="1_j4awa"]
+[ext_resource type="Texture2D" uid="uid://qw1hguwdi86l" path="res://assets/ui/background_pattern.png" id="1_r23cy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fpb4m"]
+shader = ExtResource("1_j4awa")
+shader_parameter/speed = 0.5
+
+[node name="ScrollingBackground" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_fpb4m")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_r23cy")
+stretch_mode = 1

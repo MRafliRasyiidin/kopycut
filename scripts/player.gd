@@ -442,13 +442,12 @@ func next_level():
 	var result = regex.search(scene_name)
 
 	if result:
-		print(1)
 		var current_level = int(result.get_string(1))
 		var next_level = current_level + 1
 		var next_scene_path = "res://scenes/level_%d.tscn" % next_level
-		print(2)
 
 		if ResourceLoader.exists(next_scene_path):
+			GlobalState.level += 1
 			get_tree().change_scene_to_file(next_scene_path)
 		else:
 			get_tree().change_scene_to_file("res://scenes/menu.tscn")
