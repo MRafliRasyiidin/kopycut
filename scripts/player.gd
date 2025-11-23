@@ -238,6 +238,8 @@ func _tooltip():
 				preview_tiles = get_opposite_tiles(player_tile, coords)
 			else:
 				preview_tiles.assign(disk_radius)
+				var blocked_cells := _collect_permanent_cells(disk_radius, coords)
+				preview_tiles = preview_tiles.filter(func(tile): return not blocked_cells.has(tile))
 			
 			for r in preview_tiles:
 				var expand = preload("res://misc/expand.tscn").instantiate()
@@ -409,14 +411,16 @@ func find_nearest_free_tile(center: Vector2i) -> Vector2i:
 
 func _collect_permanent_cells(cells: Array[Vector2i], center: Vector2i) -> Dictionary:
 	var blocked := {}
-	if not layers.has("permanent"):
-		return blocked
-	var permanent_layer: TileMapLayer = layers["permanent"]
-	if permanent_layer.get_cell_source_id(center) != -1:
-		blocked[center] = true
-	for cell in cells:
-		if permanent_layer.get_cell_source_id(cell) != -1:
-			blocked[cell] = true
+	var blocked_layers := ["permanent"]  # Add any layers you want to block
+	for layer_name in blocked_layers:
+		if not layers.has(layer_name):
+			continue
+		var layer: TileMapLayer = layers[layer_name]
+		if layer.get_cell_source_id(center) != -1:
+			blocked[center] = true
+		for cell in cells:
+			if layer.get_cell_source_id(cell) != -1:
+				blocked[cell] = true
 	return blocked
 
 func show_controls():
