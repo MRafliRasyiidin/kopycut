@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cpil8x1gtnci6"]
+
+[ext_resource type="Texture2D" uid="uid://dsxfrtuaokkke" path="res://assets/char/turret.png" id="1_0p4mm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2xdt"]
+atlas = ExtResource("1_0p4mm")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eci5g"]
+atlas = ExtResource("1_0p4mm")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cprpm"]
+atlas = ExtResource("1_0p4mm")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grqgx"]
+atlas = ExtResource("1_0p4mm")
+region = Rect2(576, 0, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2xdt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eci5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cprpm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grqgx")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}]

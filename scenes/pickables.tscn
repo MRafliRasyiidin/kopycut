@@ -4,6 +4,6 @@
 [ext_resource type="Script" uid="uid://boyj0hpg7ndrl" path="res://scripts/pickables.gd" id="2_pv7vd"]
 
 [node name="pickables" type="TileMapLayer"]
-tile_map_data = PackedByteArray(0, 0, 4, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 4, 0, 1, 0, 5, 0, 0, 0, 0, 0, 3, 0, 1, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0)
 tile_set = ExtResource("1_x3wad")
 script = ExtResource("2_pv7vd")

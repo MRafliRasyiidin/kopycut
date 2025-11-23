@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bi76hksj4hwrb"]
+
+[ext_resource type="SpriteFrames" uid="uid://cpil8x1gtnci6" path="res://scenes/enemy/turret/turret_char.tres" id="1_aqbd1"]
+
+[node name="TurretChar" type="Node2D"]
+scale = Vector2(0.8, 0.8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+sprite_frames = ExtResource("1_aqbd1")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.15245986

@@ -1,0 +1,73 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://dk866n3m7si83"]
+
+[ext_resource type="Texture2D" uid="uid://bgntcunlevoaq" path="res://assets/char/cut.PNG" id="1_abi4u"]
+[ext_resource type="Texture2D" uid="uid://1yiu0cc6s6lo" path="res://assets/char/paste.PNG" id="2_ohw3e"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5vf0"]
+atlas = ExtResource("1_abi4u")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tv4j"]
+atlas = ExtResource("1_abi4u")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbedx"]
+atlas = ExtResource("1_abi4u")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jr4w5"]
+atlas = ExtResource("1_abi4u")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnkaf"]
+atlas = ExtResource("2_ohw3e")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx0pj"]
+atlas = ExtResource("2_ohw3e")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0byt"]
+atlas = ExtResource("2_ohw3e")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gox8t"]
+atlas = ExtResource("2_ohw3e")
+region = Rect2(576, 0, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5vf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4tv4j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbedx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jr4w5")
+}],
+"loop": true,
+"name": &"copy",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnkaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx0pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0byt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gox8t")
+}],
+"loop": true,
+"name": &"paste",
+"speed": 3.0
+}]

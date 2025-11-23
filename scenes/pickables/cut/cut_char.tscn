@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://koygg8ocmj3x"]
+
+[ext_resource type="SpriteFrames" uid="uid://dk866n3m7si83" path="res://scenes/pickables/cut/cut_char.tres" id="1_yvwjc"]
+
+[node name="CutChar" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_yvwjc")
+animation = &"copy"
+autoplay = "copy"
+frame_progress = 0.05132979

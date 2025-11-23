@@ -33,7 +33,8 @@ var object_held: Dictionary = {
 	"source_id": -1,
 	"atlas": [],
 	"alt": 0,
-	"radius_size": 3
+	"radius_size": 3,
+	"scene": null
 }
 
 func _ready() -> void:
@@ -178,8 +179,8 @@ func pickup():
 			if blocked:
 				print("Can't place Quanta Disk here!")
 				return
-			
-			pickables.set_cell(coords, object_held["source_id"], object_held["atlas"])
+				
+			pickables.set_cell(coords, object_held["source_id"], object_held["atlas"], object_held["scene"])
 			radius_size = object_held.get("radius_size", 3)
 			update_disk_radius(coords)
 			print("DROPPED")
@@ -190,6 +191,7 @@ func pickup():
 			object_held["atlas"] = pickables.get_cell_atlas_coords(coords)
 			object_held["alt"] = pickables.get_cell_alternative_tile(coords)
 			object_held["radius_size"] = radius_size
+			object_held["scene"] = get_scene_from_tile(coords)
 			
 			if object_held["source_id"] != -1:
 				print("PICKED: ", object_held)
@@ -202,6 +204,13 @@ func pickup():
 			else:
 				print("No tile found under player on 'pickables' layer.")
 				holding = false
+				
+func get_scene_from_tile(coords: Vector2i) -> int:
+	var source_id = pickables.get_cell_source_id(coords)
+	var tile_source = pickables.tile_set.get_source(source_id)
+	var scene_index = pickables.get_cell_alternative_tile(coords)
+	#var packed_scene = tile_source.get_scene_tile_scene(scene_index)
+	return scene_index
 
 func _tooltip():
 	if not pickables:

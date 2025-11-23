@@ -21,7 +21,8 @@ func _on_timer_timeout():
 
 func _shoot():
 	var bullet = ammo.instantiate()
-	var tile_pos = turrets[0]
-	var world_pos = turret_tile.map_to_local(tile_pos)
-	bullet.position = world_pos
-	get_tree().current_scene.add_child(bullet)
+	for pos in turrets:
+		var tile_pos = pos
+		var world_pos = turret_tile.map_to_local(tile_pos)
+		bullet.position = world_pos + Vector2(50, -20)
+		get_tree().current_scene.add_child(bullet)
