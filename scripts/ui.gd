@@ -1,5 +1,10 @@
 extends CanvasLayer
 
+@onready var levelNum: Label = $LevelNum
+
+func _ready() -> void:
+	levelNum.text = str(GlobalState.level)
+
 func _on_pause_button_up() -> void:
 	if get_tree().paused:
 		AudioController.play_menu_click()
