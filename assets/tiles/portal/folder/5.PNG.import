@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://epoaxnsicx0a"
-path="res://.godot/imported/quantadisk.png-ca07ab11cdf6df7fc4073c2c2124f1b4.ctex"
+uid="uid://bgan17xnjxhyr"
+path="res://.godot/imported/5.PNG-dd820b07d0c424425a8b49390cdda95c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/quantadisk.png"
-dest_files=["res://.godot/imported/quantadisk.png-ca07ab11cdf6df7fc4073c2c2124f1b4.ctex"]
+source_file="res://assets/tiles/portal/folder/5.PNG"
+dest_files=["res://.godot/imported/5.PNG-dd820b07d0c424425a8b49390cdda95c.ctex"]
 
 [params]
 

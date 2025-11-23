@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://chponeq7led7i"]
+
+[ext_resource type="Script" uid="uid://nfkpkxed0a4v" path="res://scenes/tiles/portal/portal_tile.gd" id="1_07dcf"]
+[ext_resource type="SpriteFrames" uid="uid://jq2up5pu2jno" path="res://scenes/tiles/portal/folder.tres" id="1_tew0v"]
+[ext_resource type="SpriteFrames" uid="uid://fbwmsndb5vrf" path="res://scenes/tiles/portal/portal.tres" id="2_07dcf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07dcf"]
+size = Vector2(6512.1875, 5620.3125)
+
+[node name="PortalTile" type="Node2D"]
+scale = Vector2(0.08, 0.08)
+script = ExtResource("1_07dcf")
+
+[node name="Folder" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_tew0v")
+animation = &"open_folder"
+frame = 8
+frame_progress = 1.0
+
+[node name="Portal" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = ExtResource("2_07dcf")
+animation = &"idle"
+autoplay = "idle"
+frame = 8
+frame_progress = 1.0
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_07dcf")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

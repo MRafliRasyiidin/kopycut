@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="2_15mv3"]
 [ext_resource type="PackedScene" uid="uid://dr6hpw3v2rtpt" path="res://misc/selector.tscn" id="3_e3sih"]
 [ext_resource type="PackedScene" uid="uid://cmbp68jk0yvah" path="res://misc/player.tscn" id="4_2y5yt"]
-[ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/pickables.tscn" id="5_6dial"]
+[ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/tiles/pickables/pickables.tscn" id="5_6dial"]
 [ext_resource type="PackedScene" uid="uid://bpl1m7f7i1cru" path="res://scenes/enemy/turret/turret.tscn" id="5_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cqkrhyatmx8vs" path="res://scenes/enemy/turret/bullet.tscn" id="6_e3sih"]
 [ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="8_15mv3"]
@@ -45,7 +45,7 @@ tile_map_data = PackedByteArray("AAD7/wMABwAAAAIAAAD7/wQABwAAAAIAAAD7/wUABwAAAAI
 tile_set = ExtResource("2_15mv3")
 
 [node name="portal" type="TileMapLayer" parent="BaseMap"]
-tile_map_data = PackedByteArray("AAD+/wEABAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD+/wEABAAAAAAAAAD//wEABQAAAAAABQA=")
 tile_set = ExtResource("2_15mv3")
 
 [node name="permanent" type="TileMapLayer" parent="BaseMap"]
@@ -65,3 +65,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [connection signal="tree_exited" from="BaseMap/pickables/CopyChar" to="BaseMap/pickables/CopyChar" method="_on_tree_exited"]
+[connection signal="button_up" from="UI/HBoxContainer/Retry" to="." method="_on_retry_button_up"]

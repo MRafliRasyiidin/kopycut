@@ -1,0 +1,110 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://jq2up5pu2jno"]
+
+[ext_resource type="Texture2D" uid="uid://ch20qr7xw647m" path="res://assets/tiles/portal/folder/1.PNG" id="1_wkvo5"]
+[ext_resource type="Texture2D" uid="uid://bn0lt37iu7uie" path="res://assets/tiles/portal/folder/2.PNG" id="2_7lpmy"]
+[ext_resource type="Texture2D" uid="uid://dmlilcufjeqgh" path="res://assets/tiles/portal/folder/3.PNG" id="3_3e1i2"]
+[ext_resource type="Texture2D" uid="uid://dsul02we7872a" path="res://assets/tiles/portal/folder/4.PNG" id="4_wjpj0"]
+[ext_resource type="Texture2D" uid="uid://bgan17xnjxhyr" path="res://assets/tiles/portal/folder/5.PNG" id="5_o1trj"]
+[ext_resource type="Texture2D" uid="uid://w5f67h6mctqs" path="res://assets/tiles/portal/folder/6.PNG" id="6_ogp8o"]
+[ext_resource type="Texture2D" uid="uid://l26slxgrrwmi" path="res://assets/tiles/portal/folder/7.PNG" id="7_7wtws"]
+[ext_resource type="Texture2D" uid="uid://klf3lwci4ue5" path="res://assets/tiles/portal/folder/8.PNG" id="8_wxmw5"]
+[ext_resource type="Texture2D" uid="uid://cqjdffacoswbi" path="res://assets/tiles/portal/folder/9.PNG" id="9_bog2u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tew0v"]
+atlas = ExtResource("1_wkvo5")
+region = Rect2(0, 0, 2048, 2048)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_bog2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wxmw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7wtws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ogp8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o1trj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wjpj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3e1i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7lpmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_wkvo5")
+}],
+"loop": false,
+"name": &"close_folder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tew0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7lpmy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wkvo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_7lpmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3e1i2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wjpj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o1trj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ogp8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7wtws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wxmw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bog2u")
+}],
+"loop": false,
+"name": &"open_folder",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ogp8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7wtws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wxmw5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bog2u")
+}],
+"loop": true,
+"name": &"open_idle",
+"speed": 5.0
+}]

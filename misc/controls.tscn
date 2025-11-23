@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0mmqndsikemu"]
 
-[ext_resource type="Texture2D" uid="uid://sj7kckmudp6n" path="res://assets/key_tip_e.png" id="1_7mc4r"]
+[ext_resource type="Texture2D" uid="uid://sj7kckmudp6n" path="res://assets/other/key_tip_e.png" id="1_7mc4r"]
 [ext_resource type="Script" uid="uid://cx7kjvgrfacs4" path="res://scripts/controls.gd" id="1_lgv3t"]
 [ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_lgv3t"]
-[ext_resource type="Texture2D" uid="uid://c3y1s64jt3icl" path="res://assets/key_tip_f.png" id="3_v4mgv"]
-[ext_resource type="Texture2D" uid="uid://cma2rwl4aoer2" path="res://assets/key_tip_r.png" id="4_tdkg6"]
+[ext_resource type="Texture2D" uid="uid://c3y1s64jt3icl" path="res://assets/other/key_tip_f.png" id="3_v4mgv"]
+[ext_resource type="Texture2D" uid="uid://cma2rwl4aoer2" path="res://assets/other/key_tip_r.png" id="4_tdkg6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3

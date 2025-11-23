@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://byto7s2amdhoc"]
+
+[ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="1_w5t20"]
+[ext_resource type="Script" uid="uid://cy7n4n4sljsmq" path="res://scenes/tiles/portal/portal.gd" id="2_chfwk"]
+
+[node name="Portal" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 4, 0, 2, 0, 5, 0, 0, 0, 0, 0, 5, 0)
+tile_set = ExtResource("1_w5t20")
+script = ExtResource("2_chfwk")

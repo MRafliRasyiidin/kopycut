@@ -4,8 +4,31 @@
 [ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="2_wae8j"]
 [ext_resource type="PackedScene" uid="uid://dr6hpw3v2rtpt" path="res://misc/selector.tscn" id="3_ha73p"]
 [ext_resource type="PackedScene" uid="uid://cmbp68jk0yvah" path="res://misc/player.tscn" id="4_vcx5n"]
-[ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/pickables.tscn" id="5_q2dsb"]
-[ext_resource type="PackedScene" uid="uid://cq8rg7il3unrw" path="res://scenes/UI.tscn" id="6_p6vls"]
+[ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/tiles/pickables/pickables.tscn" id="5_q2dsb"]
+[ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="6_ax3dk"]
+[ext_resource type="Texture2D" uid="uid://btc4efqdxetvp" path="res://assets/ui/toolbar/toolbar.PNG" id="6_q2dsb"]
+[ext_resource type="Texture2D" uid="uid://d2164pyy675tx" path="res://assets/ui/toolbar/pause.png" id="7_p3r0x"]
+[ext_resource type="Texture2D" uid="uid://b0maebfj268a2" path="res://assets/ui/toolbar/retry.png" id="8_5xqnf"]
+[ext_resource type="Texture2D" uid="uid://batjdppkm5odf" path="res://assets/ui/toolbar/retry_hover.png" id="9_una4e"]
+[ext_resource type="Texture2D" uid="uid://u22xg0akaqcd" path="res://assets/ui/toolbar/maximize.png" id="10_ema3p"]
+[ext_resource type="Texture2D" uid="uid://nniaooyx5wh6" path="res://assets/ui/toolbar/minimize.png" id="11_8uepa"]
+[ext_resource type="Texture2D" uid="uid://bxhy3e4stryyg" path="res://assets/ui/toolbar/sound.png" id="12_q7pjq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wa6ex"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sx8yt"]
+texture = ExtResource("8_5xqnf")
+texture_margin_left = 100.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5r18"]
+texture = ExtResource("9_una4e")
+texture_margin_left = 100.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w5nkq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk4f1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu3ic"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_hhfj6")
