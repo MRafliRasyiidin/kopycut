@@ -23,7 +23,7 @@ func play_sfx(player: AudioStreamPlayer):
 	player.play()
 
 # --- SFX ---
-func play_bullet_hit(): play_sfx(bullet_hit) # unplayed
+func play_bullet_hit(): play_sfx(bullet_hit)
 func play_copy(): play_sfx(copy)
 func play_cut(): play_sfx(cut)
 func play_fail(): play_sfx(fail) # unplayed

@@ -54,6 +54,7 @@ bus = &"SFX"
 
 [node name="TurretShoot" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_a6m8s")
+volume_db = -20.0
 bus = &"SFX"
 
 [node name="Walk" type="AudioStreamPlayer" parent="."]
@@ -62,4 +63,6 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_gvmlv")
+autoplay = true
 bus = &"Music"
+parameters/looping = true
