@@ -1,39 +1,59 @@
-[gd_scene load_steps=3 format=3 uid="uid://dchq6lt8rjm5i"]
+[gd_scene load_steps=7 format=3 uid="uid://dchq6lt8rjm5i"]
 
 [ext_resource type="Script" uid="uid://b5bdi05tpnyce" path="res://scripts/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://b70ijv1j5fulw" path="res://assets/ui/title/Jagung bkar.PNG" id="2_rtw2f"]
+[ext_resource type="Texture2D" uid="uid://b05ivgnq6aw2s" path="res://assets/ui/toolbar/Start.png" id="3_oa1go"]
+[ext_resource type="Texture2D" uid="uid://cn4daoo5qjudj" path="res://assets/ui/toolbar/Start hover.png" id="4_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://mx2rppamut4f" path="res://assets/ui/toolbar/Exit.png" id="5_jk1qb"]
+[ext_resource type="Texture2D" uid="uid://b7mk6nj0jdgwp" path="res://assets/ui/toolbar/Exit hover.png" id="6_5dd4i"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ekxnf")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 669.5
-offset_top = 400.0
-offset_right = 1250.5
-offset_bottom = 680.0
+offset_left = -429.5
+offset_top = -540.0
+offset_right = 429.5
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_rtw2f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 80.0
+offset_right = 20.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Play" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 200
-text = "Kopy Cut"
-horizontal_alignment = 1
+texture_normal = ExtResource("3_oa1go")
+texture_hover = ExtResource("4_tbmy8")
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Exit" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_bqqt6")
-theme_override_font_sizes/font_size = 80
-text = "Play"
+texture_normal = ExtResource("5_jk1qb")
+texture_hover = ExtResource("6_5dd4i")
 
-[connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="HBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="HBoxContainer/Exit" to="." method="_on_exit_pressed"]

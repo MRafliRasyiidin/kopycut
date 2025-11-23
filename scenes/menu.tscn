@@ -1,11 +1,20 @@
 [gd_scene load_steps=7 format=3 uid="uid://df8yt1f8sjdts"]
 
-[ext_resource type="Script" uid="uid://cx1o4pydu4wva" path="res://scripts/menu.gd" id="1_vjb58"]
 [ext_resource type="Texture2D" uid="uid://b70ijv1j5fulw" path="res://assets/ui/title/Jagung bkar.PNG" id="2_mhnvy"]
 [ext_resource type="Texture2D" uid="uid://b05ivgnq6aw2s" path="res://assets/ui/toolbar/Start.png" id="4_4ytvr"]
 [ext_resource type="Texture2D" uid="uid://cn4daoo5qjudj" path="res://assets/ui/toolbar/Start hover.png" id="5_g3eks"]
 [ext_resource type="Texture2D" uid="uid://mx2rppamut4f" path="res://assets/ui/toolbar/Exit.png" id="6_v86rl"]
 [ext_resource type="Texture2D" uid="uid://b7mk6nj0jdgwp" path="res://assets/ui/toolbar/Exit hover.png" id="7_13sgg"]
+
+[sub_resource type="GDScript" id="GDScript_4ytvr"]
+script/source = "extends Control
+
+func _on_play_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://scenes/level_1.tscn\")
+
+func _on_exit_pressed() -> void:
+	get_tree().quit()
+"
 
 [node name="menu" type="Control"]
 layout_mode = 3
@@ -14,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vjb58")
+script = SubResource("GDScript_4ytvr")
 
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 1
