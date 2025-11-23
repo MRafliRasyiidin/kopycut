@@ -428,10 +428,10 @@ func show_controls():
 		return
 	
 	var coords = map.local_to_map(marker.global_position)
-	if pickables.get_cell_source_id(coords) != -1:
-		controls.visible = true
-	else:
-		controls.visible = false
+	#if pickables.get_cell_source_id(coords) != -1:
+		#controls.visible = true
+	#else:
+		#controls.visible = false
 
 func next_level():
 	var coords = portal.local_to_map(global_position)
@@ -454,7 +454,7 @@ func next_level():
 			GlobalState.level += 1
 			get_tree().change_scene_to_file(next_scene_path)
 		else:
-			get_tree().change_scene_to_file("res://scenes/menu.tscn")
+			get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 			print("Next level not found:", next_scene_path)
 	else:
 		print("Scene name doesn't match level pattern:", scene_name)

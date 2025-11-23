@@ -141,7 +141,6 @@ texture = ExtResource("2_k52mv")
 hframes = 7
 
 [node name="target" type="Node2D" parent="."]
-position = Vector2(0, -60)
 
 [node name="Marker2D2" type="Marker2D" parent="target"]
 position = Vector2(0, 120)

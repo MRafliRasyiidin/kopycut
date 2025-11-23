@@ -75,10 +75,10 @@ z_index = -1
 scale = Vector2(1.00864, 1)
 script = ExtResource("1_p0aft")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Jitter" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3443x")
 animation = &"paste"
-frame_progress = 0.453672
+frame_progress = 0.18700589
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
