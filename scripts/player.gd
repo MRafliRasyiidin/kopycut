@@ -172,6 +172,8 @@ func pickup():
 				blocked = true
 			if layers.has("permanent") and layers["permanent"].get_cell_source_id(coords) != -1:
 				blocked = true
+			if layers.has("pickables") and layers["pickables"].get_cell_source_id(coords) != -1:
+				blocked = true
 
 			if blocked:
 				print("Can't place Quanta Disk here!")
