@@ -67,8 +67,10 @@ func _physics_process(delta: float) -> void:
 		if anim.current_animation != "walk":
 			anim.play("walk")
 		velocity = velocity.move_toward(input_dir.normalized() * max_speed, acceleration * delta)
+		AudioController.play_walk()
 	else:
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
+		AudioController.stop_walk()
 		if anim.current_animation != "idle":
 			anim.play("idle")
 	
@@ -130,12 +132,16 @@ func _input(event: InputEvent) -> void:
 		pickup()
 	if event.is_action_pressed("copy"):
 		copy()
+		AudioController.play_copy()
 	if event.is_action_pressed("cut"):
 		cut()
+		AudioController.play_cut()
 	if event.is_action_pressed("paste"):
 		paste()
+		AudioController.play_paste()
 	if event.is_action_pressed("radius"):
 		change_radius()
+		AudioController.play_menu_click()
 
 func get_surrounding_cells_with_diagonals(center: Vector2i) -> Array[Vector2i]:
 	var surrounding: Array[Vector2i] = []

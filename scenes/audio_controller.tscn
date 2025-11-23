@@ -1,0 +1,65 @@
+[gd_scene load_steps=13 format=3 uid="uid://b46veuqw4fq3s"]
+
+[ext_resource type="AudioStream" uid="uid://cl8dgl6dbvk6p" path="res://sfx/bullet_hit.wav" id="1_cedxo"]
+[ext_resource type="Script" uid="uid://cvkb4yt7fklw2" path="res://scripts/audio_controller.gd" id="1_isvu6"]
+[ext_resource type="AudioStream" uid="uid://c74xcnyaks44t" path="res://sfx/copy.wav" id="2_6fhfa"]
+[ext_resource type="AudioStream" uid="uid://d1nmy6oi2kjl1" path="res://sfx/cut.wav" id="3_vj1x0"]
+[ext_resource type="AudioStream" uid="uid://ofuy0odoppfa" path="res://sfx/fail.wav" id="4_lp5i4"]
+[ext_resource type="AudioStream" uid="uid://dijveicuubd8q" path="res://sfx/menu_click.wav" id="5_acs82"]
+[ext_resource type="AudioStream" uid="uid://c8tnu13pr2agn" path="res://sfx/paste.wav" id="6_isvu6"]
+[ext_resource type="AudioStream" uid="uid://cj7bfcd4m28fl" path="res://sfx/pause.wav" id="7_gvmlv"]
+[ext_resource type="AudioStream" uid="uid://bmf61yxg5tu73" path="res://sfx/resume.wav" id="8_rd1cr"]
+[ext_resource type="AudioStream" uid="uid://h8vqd8oaysc3" path="res://sfx/turret_shoot.wav" id="9_a6m8s"]
+[ext_resource type="AudioStream" uid="uid://cgbhboc43pg12" path="res://sfx/walk.wav" id="10_e6idr"]
+[ext_resource type="AudioStream" uid="uid://b8hax2ue386fe" path="res://sfx/music.ogg" id="12_gvmlv"]
+
+[node name="AudioController" type="Node"]
+script = ExtResource("1_isvu6")
+
+[node name="BulletHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_cedxo")
+bus = &"SFX"
+
+[node name="Copy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6fhfa")
+bus = &"SFX"
+
+[node name="Cut" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vj1x0")
+volume_db = 24.0
+bus = &"SFX"
+
+[node name="Fail" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lp5i4")
+bus = &"SFX"
+
+[node name="MenuClick" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("5_acs82")
+bus = &"SFX"
+
+[node name="Paste" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_isvu6")
+bus = &"SFX"
+
+[node name="Pause" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("7_gvmlv")
+bus = &"SFX"
+
+[node name="Resume" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("8_rd1cr")
+bus = &"SFX"
+
+[node name="TurretShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_a6m8s")
+bus = &"SFX"
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_e6idr")
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_gvmlv")
+bus = &"Music"

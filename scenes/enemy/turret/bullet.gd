@@ -15,6 +15,7 @@ func _on_body_entered(body: Node2D) -> void:
 	print(body.is_in_group("Obstacle"))
 	if body.is_in_group("Player") or body.is_in_group("Obstacle"):
 		queue_free()
+		AudioController.play_bullet_hit()
 		
 func set_direction(direction: Vector2):
 	self.direction = direction

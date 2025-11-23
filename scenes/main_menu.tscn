@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://dchq6lt8rjm5i"]
 
-[ext_resource type="Script" uid="uid://b5bdi05tpnyce" path="res://scripts/menu.gd" id="1_vjb58"]
-[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_con2f"]
+[ext_resource type="Script" uid="uid://b5bdi05tpnyce" path="res://scripts/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_bqqt6"]
 
 [node name="menu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_vjb58")
+script = ExtResource("1_ekxnf")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -24,14 +24,15 @@ grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 200
 text = "Kopy Cut"
 horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_con2f")
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_bqqt6")
 theme_override_font_sizes/font_size = 80
 text = "Play"
 

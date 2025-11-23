@@ -21,6 +21,7 @@ func _on_timer_timeout():
 
 func _shoot():
 	var bullet = ammo.instantiate()
+	AudioController.play_turret_shoot()
 	for pos in turrets:
 		var tile_pos = pos
 		var world_pos = turret_tile.map_to_local(tile_pos)

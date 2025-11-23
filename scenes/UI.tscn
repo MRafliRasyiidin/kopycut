@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://cq8rg7il3unrw"]
+[gd_scene load_steps=31 format=3 uid="uid://cq8rg7il3unrw"]
 
+[ext_resource type="Script" uid="uid://b4aq7yj2wpwpr" path="res://scripts/ui.gd" id="1_flkkw"]
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="1_ua6yw"]
 [ext_resource type="Texture2D" uid="uid://c2bkg74n5fsa5" path="res://assets/ui/toolbar/Toolbar.PNG" id="2_24e4x"]
 [ext_resource type="Texture2D" uid="uid://b0maebfj268a2" path="res://assets/ui/toolbar/retry.png" id="3_3wlde"]
@@ -71,6 +72,7 @@ texture_margin_left = 100.0
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
+script = ExtResource("1_flkkw")
 
 [node name="Control" parent="." instance=ExtResource("1_ua6yw")]
 visible = false
@@ -113,6 +115,7 @@ alignment = 1
 
 [node name="Pause" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_ukj8e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_w7enk")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_w7enk")
@@ -126,6 +129,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="Retry" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_2aecg")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_6dial")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_6dial")
@@ -139,6 +143,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="Fullscreen" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_7paak")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_aputy")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_aputy")
@@ -152,6 +157,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="Windowed" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_5sqrc")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_flkkw")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_flkkw")
@@ -165,6 +171,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="Volume" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_mhjpf")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_s2m3y")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_s2m3y")
@@ -178,6 +185,7 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="Exit" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_4dthu")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_hu0pd")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_hu0pd")
@@ -188,3 +196,9 @@ theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_hu0p
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_6dial")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7nomh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
+
+[connection signal="button_up" from="HBoxContainer/Pause" to="." method="_on_pause_button_up"]
+[connection signal="button_up" from="HBoxContainer/Fullscreen" to="." method="_on_fullscreen_button_up"]
+[connection signal="button_up" from="HBoxContainer/Windowed" to="." method="_on_windowed_button_up"]
+[connection signal="button_up" from="HBoxContainer/Volume" to="." method="_on_volume_button_up"]
+[connection signal="button_up" from="HBoxContainer/Exit" to="." method="_on_exit_button_up"]
