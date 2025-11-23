@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/tiles/pickables/pickables.tscn" id="5_6dial"]
 [ext_resource type="PackedScene" uid="uid://bpl1m7f7i1cru" path="res://scenes/enemy/turret/turret.tscn" id="5_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cqkrhyatmx8vs" path="res://scenes/enemy/turret/bullet.tscn" id="6_e3sih"]
-[ext_resource type="PackedScene" uid="uid://cq8rg7il3unrw" path="res://scenes/UI.tscn" id="8_15mv3"]
+[ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="8_15mv3"]
 
 [node name="main2" type="Node2D"]
 script = ExtResource("1_pa8r4")

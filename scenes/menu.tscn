@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://df8yt1f8sjdts"]
+
+[ext_resource type="Script" path="res://scripts/menu.gd" id="1_vjb58"]
+[ext_resource type="FontFile" uid="uid://big3ldqii0344" path="res://assets/ultraprint.otf" id="2_con2f"]
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vjb58")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 669.5
+offset_top = 400.0
+offset_right = 1250.5
+offset_bottom = 680.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 200
+text = "Kopy Cut"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_con2f")
+theme_override_font_sizes/font_size = 80
+text = "Play"
+
+[connection signal="button_up" from="VBoxContainer/Play" to="." method="_on_button_button_up"]
