@@ -148,7 +148,7 @@ func paste_disk(coords: Vector2i, paste_tiles: Array[Vector2i], is_cut_mode: boo
 	
 	if memory["paste_mode"] == "cut" and memory["cut_pending"]:
 		for layer: TileMapLayer in layers.values():
-			if layer.name == "pickables":
+			if layer.name == "pickables" or layer.name == "collisions":
 				continue
 			for cell in memory["cut_tiles"]:
 				layer.set_cell(cell, -1)
