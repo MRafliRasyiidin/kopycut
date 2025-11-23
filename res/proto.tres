@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://b7r7h52dcs2cx"]
+[gd_resource type="TileSet" load_steps=22 format=3 uid="uid://b7r7h52dcs2cx"]
 
 [ext_resource type="Texture2D" uid="uid://dgkaw5oi66vyl" path="res://assets/other/tile_placeholder.png" id="1_k5db8"]
 [ext_resource type="Texture2D" uid="uid://dphck3u1jpmxe" path="res://assets/other/item.png" id="2_grkpx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jof36wke57bf" path="res://scenes/pickables/copy/copy_char.tscn" id="8_k5db8"]
 [ext_resource type="PackedScene" uid="uid://koygg8ocmj3x" path="res://scenes/pickables/cut/cut_char.tscn" id="9_grkpx"]
 [ext_resource type="PackedScene" uid="uid://chponeq7led7i" path="res://scenes/tiles/portal/portal_tile.tscn" id="10_grkpx"]
+[ext_resource type="PackedScene" uid="uid://craerl5xico1q" path="res://scenes/pickables/paste/paste_char.tscn" id="11_q0lhg"]
 [ext_resource type="Texture2D" uid="uid://cwtnm00noy8jk" path="res://assets/tiles/Box.png" id="12_14snm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fjbaw"]
@@ -50,6 +51,7 @@ scenes/2/scene = ExtResource("6_fjbaw")
 scenes/3/scene = ExtResource("8_k5db8")
 scenes/4/scene = ExtResource("9_grkpx")
 scenes/5/scene = ExtResource("10_grkpx")
+scenes/6/scene = ExtResource("11_q0lhg")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k5db8"]
 resource_name = "floors"

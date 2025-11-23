@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://craerl5xico1q"]
+
+[ext_resource type="Script" uid="uid://d35dwd2qs0ds4" path="res://scenes/pickables/copy/copy_char.gd" id="1_oknxi"]
+[ext_resource type="SpriteFrames" uid="uid://b1i1245m2yry" path="res://scenes/pickables/paste/paste_char.tres" id="2_gbfta"]
+
+[node name="PasteChar" type="Node2D"]
+scale = Vector2(0.7, 0.7)
+script = ExtResource("1_oknxi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_gbfta")
+animation = &"paste"
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

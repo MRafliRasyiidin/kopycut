@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b1i1245m2yry"]
+
+[ext_resource type="Texture2D" uid="uid://1yiu0cc6s6lo" path="res://assets/char/paste.PNG" id="2_in3lw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnkaf"]
+atlas = ExtResource("2_in3lw")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tx0pj"]
+atlas = ExtResource("2_in3lw")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0byt"]
+atlas = ExtResource("2_in3lw")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gox8t"]
+atlas = ExtResource("2_in3lw")
+region = Rect2(576, 0, 192, 192)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnkaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tx0pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0byt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gox8t")
+}],
+"loop": true,
+"name": &"paste",
+"speed": 3.0
+}]

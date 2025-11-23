@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxi7jkt84rjsy"]
+[gd_scene load_steps=5 format=3 uid="uid://dxi7jkt84rjsy"]
 
 [ext_resource type="Script" uid="uid://c65s4lwb5i1vx" path="res://scenes/obstacle/obstacle.gd" id="1_1ys07"]
 [ext_resource type="Texture2D" uid="uid://cwtnm00noy8jk" path="res://assets/tiles/Box.png" id="2_1ys07"]
@@ -6,15 +6,27 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osovj"]
 size = Vector2(150, 170)
 
-[node name="Obstacle" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ys07"]
+size = Vector2(113, 96)
+
+[node name="Obstacle" type="StaticBody2D"]
 script = ExtResource("1_1ys07")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -50)
+y_sort_enabled = true
+position = Vector2(0, -72)
 texture = ExtResource("2_1ys07")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Obstacle"]]
+y_sort_enabled = true
+position = Vector2(0, -22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_osovj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+y_sort_enabled = true
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_1ys07")

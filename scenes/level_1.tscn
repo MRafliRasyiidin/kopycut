@@ -13,9 +13,11 @@
 script = ExtResource("1_pa8r4")
 
 [node name="BaseMap" type="TileMapLayer" parent="."]
+y_sort_enabled = true
 tile_set = ExtResource("2_15mv3")
 
 [node name="floor" type="TileMapLayer" parent="BaseMap"]
+z_index = -1
 tile_map_data = PackedByteArray("AAABAAEABwACAAEAAAACAAEABwABAAAAAAACAAAABwABAAAAAAABAAAABwACAAAAAAABAAIABwACAAEAAAACAAIABwABAAAAAAADAAIABwABAAAAAAADAAEABwACAAEAAAADAAAABwABAAIAAAAEAAAABwAAAAAAAAAEAAEABwABAAEAAAAEAAIABwACAAEAAAAFAAIABwACAAAAAAAFAAEABwABAAIAAAAFAAAABwABAAIAAAD9/wAABwAAAAAAAAD9/wEABwAAAAAAAAD9/wIABwABAAEAAAD+/wAABwACAAEAAAD+/wEABwACAAEAAAD+/wIABwABAAIAAAD//wAABwACAAEAAAD//wEABwACAAEAAAD//wIABwABAAIAAAA=")
 tile_set = ExtResource("2_15mv3")
 
@@ -25,18 +27,21 @@ tile_set = ExtResource("2_15mv3")
 position = Vector2(420, 256)
 
 [node name="player" parent="BaseMap" groups=["Player"] instance=ExtResource("4_2y5yt")]
+y_sort_enabled = true
 position = Vector2(420, 256)
 max_speed = 350.0
 acceleration = 700.0
 friction = 1200.0
 
 [node name="pickables" parent="BaseMap" instance=ExtResource("5_6dial")]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAEAAEABQAAAAAAAwABAAEABQAAAAAABAA=")
 
 [node name="Turret" parent="BaseMap" instance=ExtResource("5_15mv3")]
 ammo = ExtResource("6_e3sih")
 
 [node name="objects" type="TileMapLayer" parent="BaseMap"]
+y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAFAAAABQAAAAAAAgA=")
 tile_set = ExtResource("2_15mv3")
 

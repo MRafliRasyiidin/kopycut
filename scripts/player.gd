@@ -260,6 +260,10 @@ func copy():
 	if type == 3:
 		pickables.copy_disk(coords, disk_radius, blocked_cells)
 		clear_tooltip()
+		var atlas = pickables.get_cell_atlas_coords(coords)
+		var source_id = pickables.get_cell_source_id(coords)
+		pickables.set_cell(coords, source_id, atlas, 6)
+		
 
 func get_opposite_tiles(player_tile: Vector2i, disk_tile: Vector2i) -> Array[Vector2i]:
 	var tiles: Array[Vector2i] = []
@@ -307,7 +311,6 @@ func paste():
 	var player_tile = map.local_to_map(global_position)
 	var coords: Vector2i = map.local_to_map(marker.global_position)
 	update_disk_radius(coords)
-
 	var paste_tiles = get_opposite_tiles(player_tile, coords)
 	var is_cut_mode = pickables.get_paste_mode(coords) == "cut"  # CHANGED: pass coords
 	

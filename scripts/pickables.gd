@@ -20,8 +20,9 @@ func _ready() -> void:
 func get_disk_id(coords: Vector2i) -> String:
 	var source = get_cell_source_id(coords)
 	var atlas = get_cell_atlas_coords(coords)
-	var alt = get_cell_alternative_tile(coords)
-	return "%d_%s_%d" % [source, atlas, alt]
+	#var alt = get_cell_alternative_tile(coords)
+	return "%d_%s" % [source, atlas]
+	
 func copy_disk(coords: Vector2i, disk_radius: Array[Vector2i], blocked_cells: Dictionary) -> void:
 	if get_cell_source_id(coords) == -1:
 		print("No Quanta Disk found!")

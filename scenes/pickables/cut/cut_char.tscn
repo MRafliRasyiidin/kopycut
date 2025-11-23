@@ -3,6 +3,8 @@
 [ext_resource type="SpriteFrames" uid="uid://dk866n3m7si83" path="res://scenes/pickables/cut/cut_char.tres" id="1_yvwjc"]
 
 [node name="CutChar" type="Node2D"]
+y_sort_enabled = true
+position = Vector2(0, -32.999996)
 scale = Vector2(0.7, 0.7)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
