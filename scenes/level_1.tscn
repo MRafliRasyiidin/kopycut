@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/pickables.tscn" id="5_6dial"]
 [ext_resource type="PackedScene" uid="uid://bpl1m7f7i1cru" path="res://scenes/enemy/turret/turret.tscn" id="5_15mv3"]
 [ext_resource type="PackedScene" uid="uid://cqkrhyatmx8vs" path="res://scenes/enemy/turret/bullet.tscn" id="6_e3sih"]
-[ext_resource type="PackedScene" uid="uid://cq8rg7il3unrw" path="res://scenes/UI.tscn" id="8_15mv3"]
+[ext_resource type="PackedScene" path="res://scenes/UI.tscn" id="8_15mv3"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_pa8r4")
@@ -31,6 +31,7 @@ acceleration = 700.0
 friction = 1200.0
 
 [node name="pickables" parent="BaseMap" instance=ExtResource("5_6dial")]
+tile_map_data = PackedByteArray("AAAEAAEABQAAAAAAAwABAAEABQAAAAAABAA=")
 
 [node name="Turret" parent="BaseMap" instance=ExtResource("5_15mv3")]
 ammo = ExtResource("6_e3sih")

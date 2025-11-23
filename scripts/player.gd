@@ -255,8 +255,11 @@ func copy():
 	update_disk_radius(coords)
 
 	var blocked_cells := _collect_permanent_cells(disk_radius, coords)
-	pickables.copy_disk(coords, disk_radius, blocked_cells)
-	clear_tooltip()
+	var type = pickables.get_cell_alternative_tile(coords)
+	
+	if type == 3:
+		pickables.copy_disk(coords, disk_radius, blocked_cells)
+		clear_tooltip()
 
 func get_opposite_tiles(player_tile: Vector2i, disk_tile: Vector2i) -> Array[Vector2i]:
 	var tiles: Array[Vector2i] = []
@@ -292,8 +295,10 @@ func cut():
 	update_disk_radius(coords)
 
 	var cut_tiles_array = get_opposite_tiles(player_tile, coords)
-	pickables.cut_disk(coords, cut_tiles_array)
-	clear_tooltip()
+	var type = pickables.get_cell_alternative_tile(coords)
+	if type == 4:
+		pickables.cut_disk(coords, cut_tiles_array)
+		clear_tooltip()
 
 func paste():
 	if not pickables:
