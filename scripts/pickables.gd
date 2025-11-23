@@ -198,10 +198,16 @@ func paste_disk(coords: Vector2i, paste_tiles: Array[Vector2i], is_cut_mode: boo
 	return true
 
 func get_preview_mode(coords: Vector2i) -> String:
-	var disk_id = get_disk_id(coords)
-	if disk_memories.has(disk_id):
-		return disk_memories[disk_id]["preview_mode"]
-	return "copy"
+	#var disk_id = get_disk_id(coords)
+	#if disk_memories.has(disk_id):
+		#return disk_memories[disk_id]["preview_mode"]
+	var type = get_cell_alternative_tile(coords)
+	if type == 4:
+		return "cut"
+	elif type == 3:
+		return "copy"
+	else:
+		return "default"
 
 func get_paste_mode(coords: Vector2i) -> String:
 	var disk_id = get_disk_id(coords)
