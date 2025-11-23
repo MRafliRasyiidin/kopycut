@@ -311,6 +311,9 @@ func cut():
 	if type == 4:
 		pickables.cut_disk(coords, cut_tiles_array)
 		clear_tooltip()
+		var atlas = pickables.get_cell_atlas_coords(coords)
+		var source_id = pickables.get_cell_source_id(coords)
+		pickables.set_cell(coords, source_id, atlas, 6)
 
 func paste():
 	if not pickables:
@@ -324,7 +327,7 @@ func paste():
 	
 	if pickables.paste_disk(coords, paste_tiles, is_cut_mode):
 		clear_tooltip()
-		
+
 		# Check if player is stuck after paste
 		if not is_tile_free(player_tile):
 			print("Player stuck! Searching for free tile...")
