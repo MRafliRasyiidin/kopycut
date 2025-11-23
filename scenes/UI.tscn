@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4aq7yj2wpwpr" path="res://scripts/ui.gd" id="1_flkkw"]
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="1_ua6yw"]
-[ext_resource type="Texture2D" uid="uid://c2bkg74n5fsa5" path="res://assets/ui/toolbar/Toolbar.PNG" id="2_24e4x"]
+[ext_resource type="Texture2D" uid="uid://c2bkg74n5fsa5" path="res://assets/ui/toolbar/toolbar.PNG" id="2_24e4x"]
 [ext_resource type="Texture2D" uid="uid://b0maebfj268a2" path="res://assets/ui/toolbar/retry.png" id="3_3wlde"]
 [ext_resource type="Texture2D" uid="uid://d2164pyy675tx" path="res://assets/ui/toolbar/pause.png" id="3_xpksx"]
 [ext_resource type="Texture2D" uid="uid://50jbiy1sajda" path="res://assets/ui/toolbar/pause_hover.png" id="4_24e4x"]
@@ -209,6 +209,7 @@ theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_7nomh")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_1s4pk")
 
 [node name="VolumeSlider" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
