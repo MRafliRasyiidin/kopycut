@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bkg74n5fsa5"
-path="res://.godot/imported/toolbar.PNG-99645cbf38cdbd052e3de998557d09f3.ctex"
+uid="uid://b70ijv1j5fulw"
+path="res://.godot/imported/Jagung bkar.PNG-fc38ca0d9b4f2f0d49d50cc6988fa9c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/toolbar/toolbar.PNG"
-dest_files=["res://.godot/imported/toolbar.PNG-99645cbf38cdbd052e3de998557d09f3.ctex"]
+source_file="res://assets/ui/title/Jagung bkar.PNG"
+dest_files=["res://.godot/imported/Jagung bkar.PNG-fc38ca0d9b4f2f0d49d50cc6988fa9c8.ctex"]
 
 [params]
 

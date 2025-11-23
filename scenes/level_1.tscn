@@ -18,7 +18,7 @@ tile_set = ExtResource("2_15mv3")
 
 [node name="floor" type="TileMapLayer" parent="BaseMap"]
 z_index = -1
-tile_map_data = PackedByteArray("AAABAAEABwACAAEAAAACAAEABwABAAAAAAACAAAABwABAAAAAAABAAAABwACAAAAAAABAAIABwACAAEAAAACAAIABwABAAAAAAADAAIABwABAAAAAAADAAEABwACAAEAAAADAAAABwABAAIAAAAEAAAABwAAAAAAAAAEAAEABwABAAEAAAAEAAIABwACAAEAAAAFAAIABwACAAAAAAAFAAEABwABAAIAAAAFAAAABwABAAIAAAD9/wAABwAAAAAAAAD9/wEABwAAAAAAAAD9/wIABwABAAEAAAD+/wAABwACAAEAAAD+/wEABwACAAEAAAD+/wIABwABAAIAAAD//wAABwACAAEAAAD//wEABwACAAEAAAD//wIABwABAAIAAAA=")
+tile_map_data = PackedByteArray("AAABAAEABwACAAEAAAACAAEABwABAAAAAAACAAAABwABAAAAAAABAAAABwACAAAAAAABAAIABwACAAEAAAACAAIABwABAAAAAAADAAIABwABAAAAAAADAAEABwACAAEAAAADAAAABwABAAIAAAAEAAAABwAAAAAAAAAEAAEABwABAAEAAAAEAAIABwACAAEAAAAFAAIABwACAAAAAAAFAAEABwABAAIAAAAFAAAABwABAAIAAAD9/wAABwAAAAAAAAD9/wEABwAAAAAAAAD9/wIABwABAAEAAAD+/wAABwACAAEAAAD+/wEABwACAAEAAAD+/wIABwABAAIAAAD//wAABwACAAEAAAD//wIABwABAAIAAAD//wEABwACAAEAAAA=")
 tile_set = ExtResource("2_15mv3")
 
 [node name="selector" parent="BaseMap" instance=ExtResource("3_e3sih")]
@@ -29,9 +29,9 @@ position = Vector2(420, 256)
 [node name="player" parent="BaseMap" groups=["Player"] instance=ExtResource("4_2y5yt")]
 y_sort_enabled = true
 position = Vector2(420, 256)
+friction = 1200.0
 max_speed = 350.0
 acceleration = 700.0
-friction = 1200.0
 
 [node name="pickables" parent="BaseMap" instance=ExtResource("5_6dial")]
 y_sort_enabled = true
@@ -50,7 +50,7 @@ tile_map_data = PackedByteArray("AAD7/wMABwAAAAIAAAD7/wQABwAAAAIAAAD7/wUABwAAAAI
 tile_set = ExtResource("2_15mv3")
 
 [node name="portal" type="TileMapLayer" parent="BaseMap"]
-tile_map_data = PackedByteArray("AAD+/wEABAAAAAAAAAD//wEABQAAAAAABQA=")
+tile_map_data = PackedByteArray("AAD+/wEABQAAAAAABQA=")
 tile_set = ExtResource("2_15mv3")
 
 [node name="permanent" type="TileMapLayer" parent="BaseMap"]

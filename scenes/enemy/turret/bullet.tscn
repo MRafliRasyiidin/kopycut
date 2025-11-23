@@ -1,17 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://cqkrhyatmx8vs"]
+[gd_scene load_steps=8 format=3 uid="uid://cqkrhyatmx8vs"]
 
 [ext_resource type="Texture2D" uid="uid://npgdrx2j3pd6" path="res://icon.svg" id="1_ae25n"]
 [ext_resource type="Script" uid="uid://d3fxcmmkqbeko" path="res://scenes/enemy/turret/bullet.gd" id="1_bd4rm"]
+[ext_resource type="Texture2D" uid="uid://crsde440y61ic" path="res://assets/util/bullet.png" id="3_n6e2k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nh1h"]
+atlas = ExtResource("3_n6e2k")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_av46w"]
+atlas = ExtResource("3_n6e2k")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bd4rm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nh1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_av46w")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 2.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bd4rm"]
 radius = 7.0
 
 [node name="Bullet" type="Area2D"]
+y_sort_enabled = true
 script = ExtResource("1_bd4rm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_ae25n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bd4rm")
+animation = &"bullet"
+autoplay = "bullet"
+frame_progress = 0.38749185
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
 
