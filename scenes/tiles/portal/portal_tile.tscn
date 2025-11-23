@@ -13,9 +13,7 @@ script = ExtResource("1_07dcf")
 
 [node name="Folder" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_tew0v")
-animation = &"open_folder"
-frame = 8
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="Portal" type="AnimatedSprite2D" parent="."]
 visible = false

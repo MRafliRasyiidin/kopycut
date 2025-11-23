@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://b7r7h52dcs2cx"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://b7r7h52dcs2cx"]
 
 [ext_resource type="Texture2D" uid="uid://dgkaw5oi66vyl" path="res://assets/other/tile_placeholder.png" id="1_k5db8"]
 [ext_resource type="Texture2D" uid="uid://dphck3u1jpmxe" path="res://assets/other/item.png" id="2_grkpx"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://jof36wke57bf" path="res://scenes/pickables/copy/copy_char.tscn" id="8_k5db8"]
 [ext_resource type="PackedScene" uid="uid://koygg8ocmj3x" path="res://scenes/pickables/cut/cut_char.tscn" id="9_grkpx"]
 [ext_resource type="PackedScene" uid="uid://chponeq7led7i" path="res://scenes/tiles/portal/portal_tile.tscn" id="10_grkpx"]
+[ext_resource type="Texture2D" uid="uid://cwtnm00noy8jk" path="res://assets/tiles/Box.png" id="12_14snm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fjbaw"]
 texture = ExtResource("1_k5db8")
@@ -64,6 +65,13 @@ texture_region_size = Vector2i(128, 128)
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:2/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0lhg"]
+texture = ExtResource("12_14snm")
+texture_region_size = Vector2i(128, 128)
+0:0/size_in_atlas = Vector2i(1, 2)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 64)
+
 [resource]
 tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
@@ -74,3 +82,4 @@ sources/3 = SubResource("TileSetAtlasSource_xta6w")
 sources/4 = SubResource("TileSetAtlasSource_wxtbq")
 sources/5 = SubResource("TileSetScenesCollectionSource_xta6w")
 sources/7 = SubResource("TileSetAtlasSource_k5db8")
+sources/9 = SubResource("TileSetAtlasSource_q0lhg")

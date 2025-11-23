@@ -46,7 +46,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close_folder",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -57,7 +57,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -89,7 +89,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open_folder",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -106,5 +106,5 @@ animations = [{
 }],
 "loop": true,
 "name": &"open_idle",
-"speed": 5.0
+"speed": 8.0
 }]
