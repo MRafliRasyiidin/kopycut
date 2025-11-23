@@ -195,16 +195,18 @@ func pickup():
 			
 			if object_held["source_id"] != -1:
 				print("PICKED: ", object_held)
-				pickables.set_cell(coords, -1)
-				holding = true
 				
 				# Execute the cut removal when picking up after cut
-				if pickables.is_cut_pending():
-					pickables.execute_cut_removal()
+				if pickables.is_cut_pending(coords):  # CHANGED: pass coords
+					pickables.execute_cut_removal(coords)  # CHANGED: pass coords
+				
+				pickables.set_cell(coords, -1)
+				holding = true
 			else:
 				print("No tile found under player on 'pickables' layer.")
 				holding = false
-				
+
+
 func get_scene_from_tile(coords: Vector2i) -> int:
 	var source_id = pickables.get_cell_source_id(coords)
 	var tile_source = pickables.tile_set.get_source(source_id)
@@ -221,14 +223,12 @@ func _tooltip():
 	var x = pickables.get_cell_source_id(coords)
 
 	update_disk_radius(coords)
-
 	if x != -1:
 		if show_tooltip:
 			show_tooltip = false
-			
 			# Choose which tiles to preview based on mode
 			var preview_tiles: Array[Vector2i]
-			if pickables.get_preview_mode() == "cut":
+			if pickables.get_preview_mode(coords) == "cut":  # CHANGED: pass coords
 				preview_tiles = get_opposite_tiles(player_tile, coords)
 			else:
 				preview_tiles.assign(disk_radius)
@@ -239,6 +239,7 @@ func _tooltip():
 				expand.global_position = map.map_to_local(r)
 	else:
 		clear_tooltip()
+
 
 func clear_tooltip():
 	if !show_tooltip:
@@ -303,7 +304,7 @@ func paste():
 	update_disk_radius(coords)
 
 	var paste_tiles = get_opposite_tiles(player_tile, coords)
-	var is_cut_mode = pickables.get_paste_mode() == "cut"
+	var is_cut_mode = pickables.get_paste_mode(coords) == "cut"  # CHANGED: pass coords
 	
 	if pickables.paste_disk(coords, paste_tiles, is_cut_mode):
 		clear_tooltip()
@@ -325,7 +326,7 @@ func change_radius():
 		print("No Quanta Disk found!")
 		return
 	
-	if pickables.is_saved():
+	if pickables.is_saved(coords):  # CHANGED: pass coords
 		print("Disk no longer functioning")
 		return
 	
