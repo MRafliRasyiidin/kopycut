@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=4 uid="uid://cgxnaosejgkd0"]
+[gd_scene load_steps=20 format=4 uid="uid://cgxnaosejgkd0"]
 
 [ext_resource type="Script" uid="uid://2q2p0alw8qfi" path="res://main.gd" id="1_y0kc7"]
 [ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="2_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://dr6hpw3v2rtpt" path="res://misc/selector.tscn" id="3_6cvei"]
 [ext_resource type="PackedScene" uid="uid://cmbp68jk0yvah" path="res://misc/player.tscn" id="4_que50"]
+[ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/pickables.tscn" id="5_g2hoc"]
 [ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="6_172wr"]
 [ext_resource type="Texture2D" uid="uid://btc4efqdxetvp" path="res://assets/ui/toolbar/toolbar.PNG" id="6_g2hoc"]
 [ext_resource type="Texture2D" uid="uid://d2164pyy675tx" path="res://assets/ui/toolbar/pause.png" id="7_fldb1"]
@@ -50,10 +51,6 @@ max_speed = 350.0
 acceleration = 700.0
 friction = 1200.0
 
-[node name="pickables" type="TileMapLayer" parent="BaseMap"]
-tile_map_data = PackedByteArray("AAAIAAEAAgAAAAAAAAA=")
-tile_set = ExtResource("2_ne2mo")
-
 [node name="objects" type="TileMapLayer" parent="BaseMap"]
 tile_map_data = PackedByteArray("AAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAA=")
 tile_set = ExtResource("2_ne2mo")
@@ -65,6 +62,9 @@ tile_set = ExtResource("2_ne2mo")
 [node name="portal" type="TileMapLayer" parent="BaseMap"]
 tile_map_data = PackedByteArray("AAAGAP3/BAAAAAAAAAA=")
 tile_set = ExtResource("2_ne2mo")
+
+[node name="pickables" parent="BaseMap" instance=ExtResource("5_g2hoc")]
+tile_map_data = PackedByteArray("AAAIAAEAAgAAAAAAAAA=")
 
 [node name="UI" type="CanvasLayer" parent="."]
 

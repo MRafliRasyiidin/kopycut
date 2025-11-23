@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://c16hahsg30v1l"]
+
+[ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="1_x3wad"]
+[ext_resource type="Script" uid="uid://boyj0hpg7ndrl" path="res://scripts/pickables.gd" id="2_pv7vd"]
+
+[node name="pickables" type="TileMapLayer"]
+tile_map_data = PackedByteArray(0, 0, 4, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0)
+tile_set = ExtResource("1_x3wad")
+script = ExtResource("2_pv7vd")
