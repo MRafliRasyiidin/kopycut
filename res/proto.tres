@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://wraacapa8pqj" path="res://assets/portal.png" id="5_xta6w"]
 [ext_resource type="Texture2D" uid="uid://b2li6lemuxi8v" path="res://assets/tiles/floor.png" id="6_8tkm1"]
 [ext_resource type="PackedScene" uid="uid://dxi7jkt84rjsy" path="res://scenes/obstacle/obstacle.tscn" id="6_fjbaw"]
-[ext_resource type="PackedScene" path="res://scenes/enemy/turret/turret_char.tscn" id="6_gy13t"]
+[ext_resource type="PackedScene" uid="uid://bi76hksj4hwrb" path="res://scenes/enemy/turret/turret_char.tscn" id="6_gy13t"]
 [ext_resource type="PackedScene" uid="uid://jof36wke57bf" path="res://scenes/pickables/copy/copy_char.tscn" id="8_k5db8"]
 [ext_resource type="PackedScene" uid="uid://koygg8ocmj3x" path="res://scenes/pickables/cut/cut_char.tscn" id="9_grkpx"]
 

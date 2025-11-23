@@ -146,6 +146,14 @@ func paste_disk(coords: Vector2i, paste_tiles: Array[Vector2i], is_cut_mode: boo
 	
 	print("Pasting with mode: ", memory["paste_mode"])
 	
+	if memory["paste_mode"] == "cut" and memory["cut_pending"]:
+		for layer: TileMapLayer in layers.values():
+			if layer.name == "pickables":
+				continue
+			for cell in memory["cut_tiles"]:
+				layer.set_cell(cell, -1)
+		print("Cut tiles removed during paste")
+	
 	if memory["paste_mode"] == "cut":
 		# Cut-paste: place tiles on opposite side
 		if paste_tiles.is_empty():

@@ -196,9 +196,9 @@ func pickup():
 			if object_held["source_id"] != -1:
 				print("PICKED: ", object_held)
 				
-				# Execute the cut removal when picking up after cut
-				if pickables.is_cut_pending(coords):  # CHANGED: pass coords
-					pickables.execute_cut_removal(coords)  # CHANGED: pass coords
+				## Execute the cut removal when picking up after cut
+				#if pickables.is_cut_pending(coords):  # CHANGED: pass coords
+					#pickables.execute_cut_removal(coords)  # CHANGED: pass coords
 				
 				pickables.set_cell(coords, -1)
 				holding = true
