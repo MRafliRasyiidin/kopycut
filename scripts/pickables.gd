@@ -3,7 +3,8 @@ extends TileMapLayer
 @onready var map: TileMapLayer = get_parent()
 var layers: Dictionary = {}
 
-const NON_COPYABLE_LAYERS := ["permanent", "objects", "Turret", "pickables"]
+#const NON_COPYABLE_LAYERS := ["permanent", "objects", "Turret", "pickables"]
+const NON_COPYABLE_LAYERS := ["permanent", "Turret", "pickables"]
 
 # Cut/Copy/Paste state
 var saved_disk: Array = []
