@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2bkg74n5fsa5"
-path="res://.godot/imported/Toolbar.PNG-5711486e2614ee3a433af256356fce9d.ctex"
+uid="uid://b7mk6nj0jdgwp"
+path="res://.godot/imported/Exit hover.png-3c6522a936e3d4069f67c07a95a9f4e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/toolbar/Toolbar.PNG"
-dest_files=["res://.godot/imported/Toolbar.PNG-5711486e2614ee3a433af256356fce9d.ctex"]
+source_file="res://assets/ui/toolbar/Exit hover.png"
+dest_files=["res://.godot/imported/Exit hover.png-3c6522a936e3d4069f67c07a95a9f4e4.ctex"]
 
 [params]
 

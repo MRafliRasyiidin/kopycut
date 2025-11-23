@@ -1,34 +1,11 @@
-[gd_scene load_steps=20 format=4 uid="uid://pgn7lcu84dmi"]
+[gd_scene load_steps=7 format=4 uid="uid://pgn7lcu84dmi"]
 
 [ext_resource type="Script" uid="uid://2q2p0alw8qfi" path="res://main.gd" id="1_hhfj6"]
 [ext_resource type="TileSet" uid="uid://b7r7h52dcs2cx" path="res://res/proto.tres" id="2_wae8j"]
 [ext_resource type="PackedScene" uid="uid://dr6hpw3v2rtpt" path="res://misc/selector.tscn" id="3_ha73p"]
 [ext_resource type="PackedScene" uid="uid://cmbp68jk0yvah" path="res://misc/player.tscn" id="4_vcx5n"]
 [ext_resource type="PackedScene" uid="uid://c16hahsg30v1l" path="res://scenes/pickables.tscn" id="5_q2dsb"]
-[ext_resource type="PackedScene" uid="uid://b0mmqndsikemu" path="res://misc/controls.tscn" id="6_ax3dk"]
-[ext_resource type="Texture2D" uid="uid://btc4efqdxetvp" path="res://assets/ui/toolbar/toolbar.PNG" id="6_q2dsb"]
-[ext_resource type="Texture2D" uid="uid://d2164pyy675tx" path="res://assets/ui/toolbar/pause.png" id="7_p3r0x"]
-[ext_resource type="Texture2D" uid="uid://b0maebfj268a2" path="res://assets/ui/toolbar/retry.png" id="8_5xqnf"]
-[ext_resource type="Texture2D" uid="uid://batjdppkm5odf" path="res://assets/ui/toolbar/retry_hover.png" id="9_una4e"]
-[ext_resource type="Texture2D" uid="uid://u22xg0akaqcd" path="res://assets/ui/toolbar/maximize.png" id="10_ema3p"]
-[ext_resource type="Texture2D" uid="uid://nniaooyx5wh6" path="res://assets/ui/toolbar/minimize.png" id="11_8uepa"]
-[ext_resource type="Texture2D" uid="uid://bxhy3e4stryyg" path="res://assets/ui/toolbar/sound.png" id="12_q7pjq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wa6ex"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sx8yt"]
-texture = ExtResource("8_5xqnf")
-texture_margin_left = 100.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k5r18"]
-texture = ExtResource("9_una4e")
-texture_margin_left = 100.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w5nkq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk4f1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wu3ic"]
+[ext_resource type="PackedScene" uid="uid://cq8rg7il3unrw" path="res://scenes/UI.tscn" id="6_p6vls"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_hhfj6")
@@ -66,119 +43,7 @@ tile_set = ExtResource("2_wae8j")
 [node name="pickables" parent="BaseMap" instance=ExtResource("5_q2dsb")]
 tile_map_data = PackedByteArray("AAAIAAMAAgAAAAAAAAA=")
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Control" parent="UI" instance=ExtResource("6_ax3dk")]
-visible = false
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 61.0
-offset_top = -307.0
-offset_right = 61.0
-offset_bottom = -307.0
-grow_vertical = 0
-
-[node name="TextureRect" type="TextureRect" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -1280.0
-offset_top = -1080.0
-offset_right = 1280.0
-grow_horizontal = 2
-grow_vertical = 0
-texture = ExtResource("6_q2dsb")
-stretch_mode = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -113.0
-offset_right = 50.0
-offset_bottom = -13.0
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="Pause" type="Button" parent="UI/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wa6ex")
-icon = ExtResource("7_p3r0x")
-
-[node name="Retry" type="Button" parent="UI/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_sx8yt")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_k5r18")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_k5r18")
-theme_override_styles/hover = SubResource("StyleBoxTexture_k5r18")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_k5r18")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_k5r18")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_k5r18")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_w5nkq")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_bk4f1")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wu3ic")
-
-[node name="Fullscreen" type="Button" parent="UI/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wa6ex")
-icon = ExtResource("10_ema3p")
-
-[node name="Windowed" type="Button" parent="UI/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wa6ex")
-icon = ExtResource("11_8uepa")
-
-[node name="Volume" type="Button" parent="UI/HBoxContainer"]
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_wa6ex")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_wa6ex")
-icon = ExtResource("12_q7pjq")
+[node name="UI" parent="." instance=ExtResource("6_p6vls")]
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -2
@@ -189,5 +54,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[connection signal="button_up" from="UI/HBoxContainer/Retry" to="." method="_on_retry_button_up"]
