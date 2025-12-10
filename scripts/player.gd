@@ -186,6 +186,9 @@ func pickup():
 				print("Can't place Quanta Disk here!")
 				return
 				
+			var tile_type = GlobalState.pickable_tile.get("hold")
+			GlobalState.pickable_tile[coords] = tile_type
+			GlobalState.pickable_tile.erase("hold")
 			pickables.set_cell(coords, object_held["source_id"], object_held["atlas"], object_held["scene"])
 			radius_size = object_held.get("radius_size", 3)
 			update_disk_radius(coords)
@@ -205,7 +208,9 @@ func pickup():
 				## Execute the cut removal when picking up after cut
 				#if pickables.is_cut_pending(coords):  # CHANGED: pass coords
 					#pickables.execute_cut_removal(coords)  # CHANGED: pass coords
-				
+				var preview_mode = GlobalState.pickable_tile.get(coords)
+				GlobalState.pickable_tile["hold"] = preview_mode
+				GlobalState.pickable_tile.erase(coords)
 				pickables.set_cell(coords, -1)
 				holding = true
 			else:
@@ -221,6 +226,7 @@ func get_scene_from_tile(coords: Vector2i) -> int:
 	return scene_index
 
 func _tooltip():
+	print(GlobalState.pickable_tile)
 	if not pickables:
 		return
 	
@@ -234,7 +240,7 @@ func _tooltip():
 			show_tooltip = false
 			# Choose which tiles to preview based on mode
 			var preview_tiles: Array[Vector2i]
-			if pickables.get_preview_mode(coords) == "cut":  # CHANGED: pass coords
+			if pickables.get_preview_mode(coords) == "cut" or GlobalState.pickable_tile.get(coords) == "cut":  # CHANGED: pass coords
 				preview_tiles = get_opposite_tiles(player_tile, coords)
 			else:
 				preview_tiles.assign(disk_radius)

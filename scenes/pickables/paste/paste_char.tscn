@@ -10,5 +10,8 @@ script = ExtResource("1_oknxi")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_gbfta")
 animation = &"paste"
+autoplay = "paste"
+frame = 3
+frame_progress = 1.0
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
