@@ -69,13 +69,13 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(input_dir.normalized() * max_speed, acceleration * delta)
 		AudioController.play_walk()
 	else:
-		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
-		AudioController.stop_walk()
+		velocity = Vector2.ZERO
+		var slow_down = 400  # sesuaikan, 
+		velocity = velocity.move_toward(Vector2.ZERO, slow_down * delta)
 		if anim.current_animation != "idle":
 			anim.play("idle")
 	
 	move_and_slide()
-	
 	# Snap based on last_direction
 	if held_directions.size() > 0:
 		match held_directions[-1]:
