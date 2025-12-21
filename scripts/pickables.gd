@@ -30,15 +30,15 @@ func copy_disk(coords: Vector2i, disk_radius: Array[Vector2i], blocked_cells: Di
 	
 	var disk_id = get_disk_id(coords)
 	# Initialize or reset this disk's memory
-	disk_memories[disk_id] = {
+	GlobalState.pickable_tile[coords].merge({
 		"saved_disk": [],
 		"saved": false,
 		"cut_pending": false,
 		"cut_tiles": [],
 		"preview_mode": "copy",
 		"paste_mode": "copy"
-	}
-	var memory = disk_memories[disk_id]
+	}, true)
+	var memory = GlobalState.pickable_tile[coords]
 	memory["preview_mode"] = "copy"
 	memory["paste_mode"] = "copy"
 	memory["cut_pending"] = false
@@ -78,16 +78,7 @@ func cut_disk(coords: Vector2i, cut_tiles_to_save: Array[Vector2i]) -> void:
 	var disk_id = get_disk_id(coords)
 	
 	# Initialize this disk's memory if it doesn't exist
-	if not disk_memories.has(disk_id):
-		disk_memories[disk_id] = {
-			"saved_disk": [],
-			"saved": false,
-			"cut_pending": false,
-			"cut_tiles": [],
-			"preview_mode": "copy",
-			"paste_mode": "copy"
-		}
-	var memory = disk_memories[disk_id]
+	var memory = GlobalState.pickable_tile[coords]
 	memory["cut_tiles"] = cut_tiles_to_save.duplicate()
 	memory["saved_disk"] = []
 	# Save only the cut tiles
@@ -115,9 +106,9 @@ func cut_disk(coords: Vector2i, cut_tiles_to_save: Array[Vector2i]) -> void:
 func execute_cut_removal(coords: Vector2i) -> void:
 	"""Execute the actual removal of cut tiles when disk is picked up"""
 	var disk_id = get_disk_id(coords)
-	if not disk_memories.has(disk_id):
+	if not GlobalState.pickable_tile.has(coords):
 		return
-	var memory = disk_memories[disk_id]
+	var memory = GlobalState.pickable_tile[coords]
 	if not memory["cut_pending"]:
 		return
 	for layer: TileMapLayer in layers.values():
@@ -136,12 +127,12 @@ func paste_disk(coords: Vector2i, paste_tiles: Array[Vector2i], is_cut_mode: boo
 		return false
 	
 	var disk_id = get_disk_id(coords)
-	if not disk_memories.has(disk_id):
+	if not GlobalState.pickable_tile.has(coords):
 		print("No data saved on this disk!")
 		return false
 	
-	var memory = disk_memories[disk_id]
-	if not memory["saved"]:
+	var memory = GlobalState.pickable_tile[coords]
+	if not memory.get("saved"):
 		print("No data to paste on this disk!")
 		return false
 	

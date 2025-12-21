@@ -240,7 +240,7 @@ func _tooltip():
 			show_tooltip = false
 			# Choose which tiles to preview based on mode
 			var preview_tiles: Array[Vector2i]
-			if pickables.get_preview_mode(coords) == "cut" or GlobalState.pickable_tile.get(coords) == "cut":  # CHANGED: pass coords
+			if pickables.get_preview_mode(coords) == "cut" or GlobalState.pickable_tile.get(coords).get("type", "") == "cut":  # CHANGED: pass coords
 				preview_tiles = get_opposite_tiles(player_tile, coords)
 			else:
 				preview_tiles.assign(disk_radius)
